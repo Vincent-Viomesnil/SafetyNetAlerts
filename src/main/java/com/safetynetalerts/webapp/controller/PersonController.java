@@ -18,7 +18,7 @@ import com.safetynetalerts.webapp.service.PersonService;
          * @return - An Iterable object of Employee full filled
          */
         @GetMapping("/persons")
-        public Iterable<Person> getEmployees() {
+        public Iterable<Person> getPersons() {
             return personService.getPersons();
         }
 

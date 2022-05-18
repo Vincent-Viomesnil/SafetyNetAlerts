@@ -21,25 +21,25 @@ public class Data {
         this.persons = persons;
     }
 
-    public List<MedicalRecord> getMedicalrecords() {
+    public static List<MedicalRecord> getMedicalRecords() {
         return medicalrecords;
     }
 
-    public void setMedicalrecords(List<MedicalRecord> medicalrecords) {
+    public void setMedicalRecords(List<MedicalRecord> medicalrecords) {
         this.medicalrecords = medicalrecords;
     }
 
-    public List<FireStation> getFirestations() {
+    public static List<FireStation> getFireStations() {
         return firestations;
     }
 
-    public void setFirestations(List<FireStation> firestations) {
+    public void setFireStations(List<FireStation> firestations) {
         this.firestations = firestations;
     }
 
     @Override
     public String toString() {
-        return "Data{" +
+        return "{" +
                 "persons=" + persons +
                 ", medicalRecords=" + medicalrecords +
                 ", fireStations=" + firestations +

@@ -1,5 +1,8 @@
 package com.safetynetalerts.webapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
 public class FireStation {
 
     private String address;
@@ -19,6 +22,11 @@ public String getAddress() {
 
 public String getStation() {
         return station;
+}
+
+    @Override
+    public String toString() {
+        return "Firestation [address: " +getAddress()+ ", station: " +getStation()+"] \n";
 }
 }
 
