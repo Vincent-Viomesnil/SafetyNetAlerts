@@ -21,7 +21,7 @@ public class Data {
         this.persons = persons;
     }
 
-    public List<MedicalRecord> getMedicalrecords() {
+    public static List<MedicalRecord> getMedicalRecords() {
         return medicalrecords;
     }
 
@@ -29,7 +29,7 @@ public class Data {
         this.medicalrecords = medicalrecords;
     }
 
-    public List<FireStation> getFirestations() {
+    public static List<FireStation> getFireStations() {
         return firestations;
     }
 
@@ -39,7 +39,7 @@ public class Data {
 
     @Override
     public String toString() {
-        return "Data{" +
+        return "{" +
                 "persons=" + persons +
                 ", medicalRecords=" + medicalrecords +
                 ", fireStations=" + firestations +
