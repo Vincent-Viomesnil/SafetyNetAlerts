@@ -17,6 +17,14 @@ public class Data {
         return persons;
     }
 
+    public static Iterable<FireStation> getFireStations() {
+        return  firestations;
+    }
+
+    public static Iterable<MedicalRecord> getMedicalRecords() {
+        return medicalrecords;
+    }
+
     public void setPersons(List<Person> persons) {
         this.persons = persons;
     }

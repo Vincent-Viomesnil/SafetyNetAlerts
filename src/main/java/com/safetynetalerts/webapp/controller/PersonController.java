@@ -15,10 +15,10 @@ import com.safetynetalerts.webapp.service.PersonService;
 
         /**
          * Read - Get all employees
-         * @return - An Iterable object of Employee full filled
+         * @return - An Iterable object of Persons full filled
          */
         @GetMapping("/persons")
-        public Iterable<Person> getEmployees() {
+        public Iterable<Person> getPersons() {
             return personService.getPersons();
         }
 

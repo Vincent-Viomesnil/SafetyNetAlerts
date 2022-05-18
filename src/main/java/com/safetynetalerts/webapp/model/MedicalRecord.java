@@ -1,7 +1,11 @@
 package com.safetynetalerts.webapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MedicalRecord {
 
     private String firstName;
@@ -10,7 +14,8 @@ public class MedicalRecord {
     private List<String> medications;
     private List<String> allergies;
 
-    public MedicalRecord() {}
+    public MedicalRecord() {
+    }
 
     public MedicalRecord(String firstName, String lastName, String birthdate, List<String> medications, List<String> allergies) {
         this.firstName = firstName;
@@ -41,4 +46,8 @@ public class MedicalRecord {
         return allergies;
     }
 
+    @Override
+    public String toString() {
+        return "MedicalRecord [firstName: " + getFirstName() + ", lastname: " + getLastName() + ", birthdate: " + getBirthdate() + ", medications: " + getMedications() + ", allergies:" + getAllergies() +"] \n";
+    }
 }
