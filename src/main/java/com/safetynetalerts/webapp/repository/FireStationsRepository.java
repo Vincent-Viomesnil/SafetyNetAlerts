@@ -18,3 +18,4 @@ public interface FireStationsRepository {
 
     FireStation save(FireStation fireStations);
 }
+

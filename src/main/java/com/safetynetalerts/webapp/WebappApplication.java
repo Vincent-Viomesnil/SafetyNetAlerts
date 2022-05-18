@@ -24,7 +24,7 @@ public class WebappApplication {
 
 		// externaliser, read data. dans un autre fchier
 		try {
-			ObjectMapper mapper = new ObjectMapper();
+			ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);;
 			Data data = mapper.readValue(new File("src/main/resources/data.json"), Data.class);
 
 			System.out.println(data.toString());

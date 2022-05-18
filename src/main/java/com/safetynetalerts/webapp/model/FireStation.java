@@ -22,11 +22,12 @@ public class FireStation {
 
     public String getStation() {
         return station;
-    }
+
 
     @Override
     public String toString() {
         return "Firestation [address: " +getAddress()+ ", station: " +getStation()+"] \n";
-    }
 }
+}
+
 

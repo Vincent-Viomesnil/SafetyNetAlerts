@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
+
 @JsonIgnoreProperties(ignoreUnknown = true)
+
 public class MedicalRecord {
 
     private String firstName;
@@ -50,3 +52,4 @@ public class MedicalRecord {
         return "MedicalRecord [firstName: " + getFirstName() + ", lastname: " + getLastName() + ", birthdate: " + getBirthdate() + ", medications: " + getMedications() + ", allergies:" + getAllergies() +"] \n";
     }
 }
+

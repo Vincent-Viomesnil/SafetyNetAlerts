@@ -25,7 +25,7 @@ public class Data {
         return medicalrecords;
     }
 
-    public void setMedicalrecords(List<MedicalRecord> medicalrecords) {
+    public void setMedicalRecords(List<MedicalRecord> medicalrecords) {
         this.medicalrecords = medicalrecords;
     }
 
@@ -33,7 +33,7 @@ public class Data {
         return firestations;
     }
 
-    public void setFirestations(List<FireStation> firestations) {
+    public void setFireStations(List<FireStation> firestations) {
         this.firestations = firestations;
     }
 
