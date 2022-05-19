@@ -18,7 +18,7 @@ import com.safetynetalerts.webapp.repository.PersonsRepository;
         PersonDAO personDAO = new PersonDAO();
 
         public Optional<Person> getPerson(final Long id) {
-            return personsRepository.findById(id);
+            return personDAO.findById(id);
         }
 
         public Iterable<Person> getPersons() {
@@ -26,11 +26,11 @@ import com.safetynetalerts.webapp.repository.PersonsRepository;
         }
 
         public void deletePersons(final Long id) {
-            personsRepository.deleteById(id);
+            personDAO.deleteById(id);
         }
 
         public Person savePersons(Person persons) {
-            Person savedPersons = personsRepository.save(persons);
+            Person savedPersons = personDAO.save(persons);
             return savedPersons;
         }
 
