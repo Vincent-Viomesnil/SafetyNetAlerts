@@ -3,6 +3,7 @@ package com.safetynetalerts.webapp.repository;
 import com.safetynetalerts.webapp.model.Person;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -15,5 +16,5 @@ public interface PersonsRepository  {
 
     void deleteById(Long id);
 
-    Person save(Person persons);
+    List<Person> savePerson(Person persons);
 }

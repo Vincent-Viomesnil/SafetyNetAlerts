@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Person {
-    private Long id;
-
     private String firstName;
     private String lastName;
     private String address;
@@ -58,8 +56,11 @@ public class Person {
         return lastName;
     }
 
+    @Override
     public String toString() {
        return "Person [firstName: " +getFirstName() + ", lastName: " + getLastName() + ", address: " + getAddress() + ", city: " + getCity() + ", zip: " + getZip() + ", phone: " + getPhone() + ", mail: " + getEmail() +"] \n";
     }
+
+
     }
 
