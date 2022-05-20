@@ -15,11 +15,9 @@ public class PersonDAO implements PersonsRepository {
     }
 
     @Override
-    public List<Person> savePerson(Person person1){
-        List<Person> savePerson = Data.getPersons();
-        savePerson.add(person1);
-        return savePerson;
-
+    public List<Person> savePerson(Person person){
+        Person newPerson = new Person("first", "last", "add", "city", "zip", "phone", "email");
+               return savePerson(newPerson);
     }
 
     @Override

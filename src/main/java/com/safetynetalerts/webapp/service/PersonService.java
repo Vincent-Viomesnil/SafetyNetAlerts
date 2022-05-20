@@ -22,8 +22,8 @@ import com.safetynetalerts.webapp.repository.PersonsRepository;
             return personDAO.findAll();
         }
 
-        public List<Person> addPerson(Person person1) {
-            return personDAO.savePerson(person1);
+        public List<Person> addPerson(Person person) {
+            return personDAO.savePerson(person);
         }
 
         public void deletePersons(final Long id) {

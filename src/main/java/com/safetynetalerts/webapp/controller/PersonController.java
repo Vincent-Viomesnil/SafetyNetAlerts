@@ -26,11 +26,11 @@ import java.util.List;
         public Iterable<Person> getPersons() {
             return personService.getPersons();
         }
+        //Renvoie une liste à null => méthode addPErson sauvegarde puis méthode getPersons renvoie l'objet enregistré mais pas setté donc null
 
-
-        @PostMapping("/persons")
-        public List<Person> addPerson(Person person1) {
-            return personService.addPerson(person1);
+       @PostMapping("/persons")
+        public List<Person> addPerson(Person person) {
+            return personService.addPerson(person);
         }
     }
       /*  @DeleteMapping("/persons")

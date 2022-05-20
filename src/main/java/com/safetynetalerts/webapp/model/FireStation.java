@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class FireStation {
 
     private String address;
-    private String station;
+    private String station; //private Integer station
 
     public FireStation() {}
 
