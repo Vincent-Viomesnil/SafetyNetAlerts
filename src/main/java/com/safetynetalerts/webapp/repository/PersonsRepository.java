@@ -16,5 +16,5 @@ public interface PersonsRepository  {
 
     void deleteById(Long id);
 
-    List<Person> savePerson(Person persons);
+    boolean savePerson(Person person);
 }

@@ -1,10 +1,8 @@
 package com.safetynetalerts.webapp.controller;
 
+import com.safetynetalerts.webapp.dao.PersonDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.service.PersonService;
@@ -29,8 +27,12 @@ import java.util.List;
         //Renvoie une liste à null => méthode addPErson sauvegarde puis méthode getPersons renvoie l'objet enregistré mais pas setté donc null
 
        @PostMapping("/persons")
-        public List<Person> addPerson(Person person) {
+        public boolean addPerson(@RequestParam String firstName,@RequestParam String lastName,@RequestParam String address,@RequestParam String city,@RequestParam String zip,@RequestParam String phone,@RequestParam String email)/*Person person*/ {
+            Person person = new Person(firstName, lastName, address, city, zip, phone, email);
             return personService.addPerson(person);
+          /* List<Person> newPerson = personService.addPerson(person);
+           return newPerson;*/
+           //paramètre à passer en plus dans postman, remettre les mêmes paramètres dans la nouvelle personne créée.
         }
     }
       /*  @DeleteMapping("/persons")

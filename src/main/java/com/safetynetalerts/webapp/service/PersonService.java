@@ -22,7 +22,8 @@ import com.safetynetalerts.webapp.repository.PersonsRepository;
             return personDAO.findAll();
         }
 
-        public List<Person> addPerson(Person person) {
+        public boolean addPerson(Person person) {
+           // personDAO.savePerson(person);
             return personDAO.savePerson(person);
         }
 
