@@ -33,6 +33,7 @@ import java.util.List;
           /* List<Person> newPerson = personService.addPerson(person);
            return newPerson;*/
            //paramètre à passer en plus dans postman, remettre les mêmes paramètres dans la nouvelle personne créée.
+           // Il n'y avait pas besoin de recréer des objets à chaque classe puisque l'objet Person person a déjà été créé
         }
     }
       /*  @DeleteMapping("/persons")

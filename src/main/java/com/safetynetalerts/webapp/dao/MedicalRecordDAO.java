@@ -25,8 +25,9 @@ public class MedicalRecordDAO implements MedicalRecordsRepository {
 
     }
 
+
     @Override
-    public MedicalRecord save(MedicalRecord medicalRecords) {
-        return null;
+    public boolean saveMedicalRecord(MedicalRecord medicalRecord) {
+        return Data.getMedicalRecords().add(medicalRecord);
     }
 }

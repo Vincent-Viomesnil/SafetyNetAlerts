@@ -4,7 +4,7 @@ import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.repository.PersonsRepository;
 
-import java.util.List;
+
 import java.util.Optional;
 
 public class PersonDAO implements PersonsRepository {

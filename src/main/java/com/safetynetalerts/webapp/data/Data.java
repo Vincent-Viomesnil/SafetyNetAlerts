@@ -20,11 +20,11 @@ public class Data {
         return persons;
     }
 
-    public static Iterable<FireStation> getFireStations() {
+    public static List<FireStation> getFireStations() {
         return firestations;
     }
 
-    public static Iterable<MedicalRecord> getMedicalRecords() {
+    public static List<MedicalRecord> getMedicalRecords() {
         return medicalrecords;
     }
 

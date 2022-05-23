@@ -23,9 +23,8 @@ public class MedicalRecordService {
         medicalRecordDAO.deleteById(id);
     }
 
-    public MedicalRecord saveMedicalRecords(MedicalRecord medicalRecords) {
-        MedicalRecord savedMedicalRecords = medicalRecordDAO.save(medicalRecords);
-        return savedMedicalRecords;
-    }
 
+    public boolean addMedicalRecord(MedicalRecord medicalRecord) {
+        return medicalRecordDAO.saveMedicalRecord(medicalRecord);
+    }
 }

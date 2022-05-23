@@ -14,5 +14,5 @@ public interface MedicalRecordsRepository {
 
     void deleteById(Long id);
 
-    MedicalRecord save(MedicalRecord medicalRecords);
+    boolean saveMedicalRecord(MedicalRecord medicalRecord);
 }
