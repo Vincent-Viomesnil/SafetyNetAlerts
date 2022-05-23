@@ -14,7 +14,7 @@ public interface PersonsRepository  {
 
     Iterable<Person> findAll();
 
-    void deleteById(Long id);
-
     boolean savePerson(Person person);
+
+    boolean deletePerson(String firstName, String lastName);
 }

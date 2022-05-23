@@ -27,10 +27,14 @@ import com.safetynetalerts.webapp.repository.PersonsRepository;
             return personDAO.savePerson(person);
         }
 
-        public void deletePersons(final Long id) {
-            personDAO.deleteById(id);
-        }
 
+        //public boolean deletePerson(Person person) {
+        //    return personDAO.deletePerson(person);
+        //}
+
+        public boolean deletePerson(String firstName, String lastName) {
+            return personDAO.deletePerson(firstName, lastName);
+        }
     }
 
 

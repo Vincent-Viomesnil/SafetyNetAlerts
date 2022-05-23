@@ -4,27 +4,23 @@ import com.safetynetalerts.webapp.dao.MedicalRecordDAO;
 import com.safetynetalerts.webapp.model.MedicalRecord;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 public class MedicalRecordService {
 
     MedicalRecordDAO medicalRecordDAO = new MedicalRecordDAO();
 
-    public Optional<MedicalRecord> getMedicalRecord(final long id) {
-        return medicalRecordDAO.findById(id);
-    }
 
     public Iterable<MedicalRecord> getMedicalRecords() {
         return medicalRecordDAO.findAll();
     }
 
-    public void deleteMedicalRecords(final Long id) {
-        medicalRecordDAO.deleteById(id);
-    }
-
 
     public boolean addMedicalRecord(MedicalRecord medicalRecord) {
         return medicalRecordDAO.saveMedicalRecord(medicalRecord);
+    }
+
+    public boolean deleteMedicalRecord(String firstName, String lastName) {
+        return medicalRecordDAO.deleteMedicalRecord(firstName, lastName);
     }
 }

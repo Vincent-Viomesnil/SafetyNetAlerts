@@ -5,15 +5,9 @@ import com.safetynetalerts.webapp.model.MedicalRecord;
 import com.safetynetalerts.webapp.repository.MedicalRecordsRepository;
 
 
-import java.util.Optional;
 
 public class MedicalRecordDAO implements MedicalRecordsRepository {
 
-
-    @Override
-    public Optional<MedicalRecord> findById(Long id) {
-        return Optional.empty();
-    }
 
     @Override
     public Iterable<MedicalRecord> findAll() {
@@ -21,13 +15,12 @@ public class MedicalRecordDAO implements MedicalRecordsRepository {
     }
 
     @Override
-    public void deleteById(Long id) {
-
-    }
-
-
-    @Override
     public boolean saveMedicalRecord(MedicalRecord medicalRecord) {
         return Data.getMedicalRecords().add(medicalRecord);
+    }
+
+    @Override
+    public boolean deleteMedicalRecord(String firstName, String lastName) {
+        return Data.getMedicalRecords().removeIf(medicalRecord -> medicalRecord.getFirstName().equals(firstName) && medicalRecord.getLastName().equals(lastName));
     }
 }

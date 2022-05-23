@@ -8,11 +8,9 @@ import java.util.Optional;
 @Repository
 public interface MedicalRecordsRepository {
 
-    Optional<MedicalRecord> findById(Long id);
-
-    Iterable<MedicalRecord> findAll();
-
-    void deleteById(Long id);
+     Iterable<MedicalRecord> findAll();
 
     boolean saveMedicalRecord(MedicalRecord medicalRecord);
+
+    boolean deleteMedicalRecord(String firstName, String lastName);
 }

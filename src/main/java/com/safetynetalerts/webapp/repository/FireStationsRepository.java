@@ -9,12 +9,9 @@ import java.util.Optional;
 @Repository
 public interface FireStationsRepository {
 
-
-    Optional<FireStation> findById(Long id);
-
     Iterable<FireStation> findAll();
 
-    void deleteById(Long id);
+    boolean saveFireStation(FireStation fireStation);
 
-    FireStation save(FireStation fireStations);
+    boolean deleteFireStation(String address);
 }

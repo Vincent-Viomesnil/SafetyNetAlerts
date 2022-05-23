@@ -26,6 +26,15 @@ public class Person {
         this.email = email;
     }
 
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public void PersonId(String firstName, String lastName) {
+
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

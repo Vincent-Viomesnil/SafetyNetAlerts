@@ -3,14 +3,9 @@ package com.safetynetalerts.webapp.dao;
 import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.repository.FireStationsRepository;
-import java.util.Optional;
 
 public class FireStationDAO implements FireStationsRepository {
 
-    @Override
-    public Optional<FireStation> findById(Long id) {
-        return Optional.empty();
-    }
 
     @Override
     public Iterable<FireStation> findAll() {
@@ -18,12 +13,12 @@ public class FireStationDAO implements FireStationsRepository {
     }
 
     @Override
-    public void deleteById(Long id) {
-
+    public boolean saveFireStation(FireStation fireStation) {
+      return  Data.getFireStations().add(fireStation);
     }
 
     @Override
-    public FireStation save(FireStation fireStations) {
-        return null;
+    public boolean deleteFireStation(String address){
+        return Data.getFireStations().removeIf(fireStation -> fireStation.getAddress().equals(address));
     }
 }

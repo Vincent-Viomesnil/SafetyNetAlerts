@@ -30,9 +30,13 @@ public class PersonDAO implements PersonsRepository {
         return Data.getPersons();
     }
 
-    @Override
-    public void deleteById(Long id) {
+   /* @Override
+    public boolean deletePerson(Person person) {
+        return Data.getPersons().remove(person);
+    }*/
 
+    public boolean deletePerson(String firstName, String lastName) {
+        return Data.getPersons().removeIf(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName));
     }
 
 }
