@@ -4,31 +4,64 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Person {
-    private Long id;
-
     private String firstName;
     private String lastName;
     private String address;
     private String city;
     private String zip;
     private String phone;
-    private String mail;
+    private String email;
 
     public Person(){
 
     }
 
-
-    public Person(String firstName, String lastName, String address, String city, String zip, String phone, String mail) {
+    public Person(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.city = city;
         this.zip = zip;
         this.phone = phone;
-        this.mail = mail;
+        this.email = email;
     }
 
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public void PersonId(String firstName, String lastName) {
+
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getAddress() {
         return address;
@@ -46,11 +79,11 @@ public class Person {
         return phone;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-   public String getFirstName(){
+    public String getFirstName(){
        return firstName;
    }
 
@@ -58,8 +91,11 @@ public class Person {
         return lastName;
     }
 
+    @Override
     public String toString() {
-       return "Person [firstName: " +getFirstName() + ", lastName: " + getLastName() + ", address: " + getAddress() + ", city: " + getCity() + ", zip: " + getZip() + ", phone: " + getPhone() + ", mail: " + getMail() +"]";
+       return "Person [firstName: " +getFirstName() + ", lastName: " + getLastName() + ", address: " + getAddress() + ", city: " + getCity() + ", zip: " + getZip() + ", phone: " + getPhone() + ", mail: " + getEmail() +"] \n";
     }
+
+
     }
 

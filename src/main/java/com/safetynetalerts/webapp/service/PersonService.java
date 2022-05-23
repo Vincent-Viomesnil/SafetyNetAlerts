@@ -1,5 +1,6 @@
 package com.safetynetalerts.webapp.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.safetynetalerts.webapp.dao.PersonDAO;
@@ -17,21 +18,23 @@ import com.safetynetalerts.webapp.repository.PersonsRepository;
         private PersonsRepository personsRepository;
         PersonDAO personDAO = new PersonDAO();
 
-        public Optional<Person> getPerson(final Long id) {
-            return personsRepository.findById(id);
-        }
-
         public Iterable<Person> getPersons() {
             return personDAO.findAll();
         }
 
-        public void deletePersons(final Long id) {
-            personsRepository.deleteById(id);
+        public boolean addPerson(Person person) {
+           // personDAO.savePerson(person);
+            return personDAO.savePerson(person);
         }
 
-        public Person savePersons(Person persons) {
-            Person savedPersons = personsRepository.save(persons);
-            return savedPersons;
-        }
 
+        //public boolean deletePerson(Person person) {
+        //    return personDAO.deletePerson(person);
+        //}
+
+        public boolean deletePerson(String firstName, String lastName) {
+            return personDAO.deletePerson(firstName, lastName);
+        }
     }
+
+

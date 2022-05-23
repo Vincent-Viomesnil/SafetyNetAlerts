@@ -1,10 +1,13 @@
 package com.safetynetalerts.webapp.data;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.model.MedicalRecord;
 import com.safetynetalerts.webapp.model.Person;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -15,6 +18,14 @@ public class Data {
 
     public static List<Person> getPersons() {
         return persons;
+    }
+
+    public static List<FireStation> getFireStations() {
+        return firestations;
+    }
+
+    public static List<MedicalRecord> getMedicalRecords() {
+        return medicalrecords;
     }
 
     public void setPersons(List<Person> persons) {
@@ -37,16 +48,17 @@ public class Data {
         this.firestations = firestations;
     }
 
+
     @Override
     public String toString() {
-        return "Data{" +
+        return "{" +
                 "persons=" + persons +
                 ", medicalRecords=" + medicalrecords +
                 ", fireStations=" + firestations +
                 '}';
     }
 
+    }
 
-}
 
 
