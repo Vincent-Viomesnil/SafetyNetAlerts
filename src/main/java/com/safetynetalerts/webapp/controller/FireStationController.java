@@ -13,18 +13,18 @@ public class FireStationController {
     @Autowired
     private FireStationService fireStationService;
 
-    @GetMapping("/firestations")
+    @GetMapping("/firestation")
     public Iterable<FireStation> getFireStations() {
         return fireStationService.getFireStations();
     }
 
-    @PostMapping("/firestations")
+    @PostMapping("/firestation")
     public boolean addFireStation(@RequestParam String address, @RequestParam String station) {
         FireStation fireStation = new FireStation(address, station);
         return fireStationService.addFireStation(fireStation);
     }
 
-    @DeleteMapping("/firestations")
+    @DeleteMapping("/firestation")
     public boolean deleteFireStation(@RequestParam String address) {
         return fireStationService.deleteFireStation(address);
     }
