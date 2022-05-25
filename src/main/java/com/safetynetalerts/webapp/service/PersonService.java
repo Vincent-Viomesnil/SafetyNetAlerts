@@ -35,6 +35,10 @@ import com.safetynetalerts.webapp.repository.PersonsRepository;
         public boolean deletePerson(String firstName, String lastName) {
             return personDAO.deletePerson(firstName, lastName);
         }
+
+        public boolean updatePerson(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
+         return personDAO.updatePerson(firstName, lastName, address, city, zip, phone, email);
+        }
     }
 
 

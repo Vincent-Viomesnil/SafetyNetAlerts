@@ -4,6 +4,7 @@ import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.MedicalRecord;
 import com.safetynetalerts.webapp.repository.MedicalRecordsRepository;
 
+import java.util.List;
 
 
 public class MedicalRecordDAO implements MedicalRecordsRepository {
@@ -22,5 +23,18 @@ public class MedicalRecordDAO implements MedicalRecordsRepository {
     @Override
     public boolean deleteMedicalRecord(String firstName, String lastName) {
         return Data.getMedicalRecords().removeIf(medicalRecord -> medicalRecord.getFirstName().equals(firstName) && medicalRecord.getLastName().equals(lastName));
+    }
+
+    @Override
+    public boolean updateMedicalRecord(String firstName, String lastName, String birthdate, List<String> medications, List<String> allergies) {
+        for (MedicalRecord currentMedicalRecord : Data.getMedicalRecords()) {
+            if (currentMedicalRecord.getFirstName().equals(firstName) && currentMedicalRecord.getLastName().equals(lastName)) {
+                currentMedicalRecord.setBirthdate(birthdate);
+                currentMedicalRecord.setMedications(medications);
+                currentMedicalRecord.setAllergies(allergies);
+                return true;
+            }
+        }
+        return false;
     }
 }

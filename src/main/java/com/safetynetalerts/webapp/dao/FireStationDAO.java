@@ -21,4 +21,15 @@ public class FireStationDAO implements FireStationsRepository {
     public boolean deleteFireStation(String address){
         return Data.getFireStations().removeIf(fireStation -> fireStation.getAddress().equals(address));
     }
+
+    @Override
+    public boolean updateFireStation(String address, String station) {
+        for (FireStation currentFireStation : Data.getFireStations()) {
+            if (currentFireStation.getAddress().equals(address)) {
+                currentFireStation.setStation(station);
+                return true;
+            }
+        }
+        return false;
+    }
 }
