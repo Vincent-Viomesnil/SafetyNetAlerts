@@ -28,5 +28,10 @@ public class FireStationController {
     public boolean deleteFireStation(@RequestParam String address) {
         return fireStationService.deleteFireStation(address);
     }
+
+    @PutMapping("/firestation")
+    public boolean updateFireStation(@RequestParam String address, @RequestParam String station) {
+        return fireStationService.updateFireStation(address,station);
+    }
 }
 

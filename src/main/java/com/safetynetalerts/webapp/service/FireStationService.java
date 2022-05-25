@@ -4,9 +4,6 @@ import com.safetynetalerts.webapp.dao.FireStationDAO;
 import com.safetynetalerts.webapp.model.FireStation;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-
 @Service
 public class FireStationService {
 
@@ -25,4 +22,7 @@ public class FireStationService {
         return fireStationDAO.deleteFireStation(address);
     }
 
+    public boolean updateFireStation(String address, String station) {
+        return fireStationDAO.updateFireStation(address, station);
+    }
 }

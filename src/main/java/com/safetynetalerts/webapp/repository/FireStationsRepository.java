@@ -14,4 +14,6 @@ public interface FireStationsRepository {
     boolean saveFireStation(FireStation fireStation);
 
     boolean deleteFireStation(String address);
+
+    boolean updateFireStation(String address, String station);
 }
