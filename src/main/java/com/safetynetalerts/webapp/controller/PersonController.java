@@ -16,11 +16,6 @@ import java.util.List;
     @Autowired
     private PersonService personService;
 
-    /**
-     * Read - Get all employees
-     *
-     * @return - An Iterable object of Persons full filled
-     */
     @GetMapping("/person")
     public Iterable<Person> getPersons() {
         return personService.getPersons();
