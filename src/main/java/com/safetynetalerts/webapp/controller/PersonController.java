@@ -38,7 +38,6 @@ import java.util.List;
     }
 
     @PutMapping("/person")
-
     public boolean updatePerson(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String address, @RequestParam String city, @RequestParam String zip, @RequestParam String phone, @RequestParam String email) {
         return personService.updatePerson(firstName, lastName, address, city, zip, phone, email);
     }
