@@ -2,33 +2,25 @@ package com.safetynetalerts.webapp.service;
 
 
 import com.safetynetalerts.webapp.dao.PersonDAO;
-import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.Person;
-import com.safetynetalerts.webapp.repository.PersonsRepository;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@Tag("PersonServiceTest")
 @SpringBootTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 public class PersonServiceTest {
 
@@ -43,16 +35,10 @@ public class PersonServiceTest {
 
 
     @Test
-    public void statusPerson() throws Exception {
-        mockMvc.perform(get("/person"))
-                .andExpect(status().isOk());
-            }
-
-    @Test
     public void getPersonsTest() {
-        //GIVEN
 
-         person = new Person();
+        //GIVEN
+        person = new Person();
 
         Iterable<Person> iterablePerson = new ArrayList<>();
 
@@ -74,10 +60,21 @@ public class PersonServiceTest {
     public void addPersonTest(){
 
             person = new Person("first", "last", "add", "city", "zip", "phone", "email");
-            personDAO.savePerson(person);
+            when(personDAO.savePerson(person)).thenReturn(true);
             assertThat(person.getFirstName()).isEqualTo("first");
 
         }
+
+
+    @Test
+    public void updatePersonTest() throws Exception {
+        person = new Person("first", "last", "add", "city", "zip", "phone", "email");
+        when(personDAO.updatePerson("first","last", "add123", "city123",  "zip123", "phone123  ","email123")).thenReturn(true);
+        assertThat(person.getAddress()).isEqualTo("add123");
+    }
+    }
+
+        /*
     @Test
     public void updatePersonTest() throws Exception {
 
@@ -102,8 +99,6 @@ public class PersonServiceTest {
         //Mettre les paramètres attendus dans la méthode deletePerson
         verify(personDAO, times(1)).deletePerson("John", "Boyd");
         // Si blocage, regardez autres méthodes de tests (when, then return) / créer une personne pour la supp.
-
-    }
-
-    }
+  }
+*/
 
