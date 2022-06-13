@@ -8,13 +8,16 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class Data {
-    private static List<Person> persons;
-    private static List<MedicalRecord> medicalrecords;
-    private static List<FireStation> firestations;
+    private static List<Person> persons = new ArrayList<Person>();
+    private static List<MedicalRecord> medicalrecords= new ArrayList<MedicalRecord>();
+    private static List<FireStation> firestations= new ArrayList<FireStation>();
+
+
 
     public static List<Person> getPersons() {
         return persons;
