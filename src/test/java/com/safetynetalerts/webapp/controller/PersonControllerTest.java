@@ -44,14 +44,10 @@ public class PersonControllerTest {
     public void postPersonTest() throws Exception {
 
         Person person = new Person("firstname","lastname", "address", "city",  "12345", "06123456789","email@email.com");
-        ObjectMapper mapper = new ObjectMapper();
-        String personJson = mapper.writeValueAsString(person); //converting Json to Java
 
-        when(personService.addPerson(ArgumentMatchers.any())).thenReturn(true);
+        when(personService.addPerson(person)).thenReturn(true);
 
-        MockMvcRequestBuilders.post("/person")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(personJson);
+        mockMvc.perform(post("/person?firstName=firstname&lastName=lastname&address=address&city=city&zip=12345&phone=06123456789&email=email@email.com")).andExpect(status().isOk());
 
     }
 
@@ -60,15 +56,10 @@ public class PersonControllerTest {
     public void deletePersonTest() throws Exception {
 
         Person person = new Person("firstname","lastname", "address", "city",  "12345", "06123456789","email@email.com");
-       /* ObjectMapper mapper = new ObjectMapper();
-        String personJson = mapper.writeValueAsString(person); //converting Json to Java
 
-        MockMvcRequestBuilders.delete("/person")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(personJson); */
-       when(personService.deletePerson("firstname", "lastname")).thenReturn(true);
+        when(personService.deletePerson("firstname", "lastname")).thenReturn(true);
 
-       mockMvc.perform(delete("/person?firstName=firstname&lastName=lastname")).andExpect(status().isOk());
+        mockMvc.perform(delete("/person?firstName=firstname&lastName=lastname")).andExpect(status().isOk());
 
     }
 

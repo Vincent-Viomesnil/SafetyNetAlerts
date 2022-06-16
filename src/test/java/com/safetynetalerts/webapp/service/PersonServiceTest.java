@@ -4,25 +4,17 @@ package com.safetynetalerts.webapp.service;
 import com.safetynetalerts.webapp.dao.PersonDAO;
 import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.Person;
-import com.safetynetalerts.webapp.repository.PersonsRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.ArrayList;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
@@ -44,8 +36,6 @@ public class PersonServiceTest {
         //GIVEN
         person = new Person();
 
-        Iterable<Person> iterablePerson = new ArrayList<>();
-
         person.setFirstName("firstname");
         person.setLastName("lastname");
         person.setAddress("address");
@@ -54,9 +44,9 @@ public class PersonServiceTest {
         person.setPhone("06123456789");
         person.setEmail("email@email.com");
 
-        when(personDAO.findAll()).thenReturn(iterablePerson);
+        when(personDAO.findAll()).thenReturn(Data.getPersons());
 
-        assertThat(iterablePerson).isNotNull();
+        assertThat(personService.getPersons()).isNotNull();
 
     }
 
@@ -117,11 +107,4 @@ public class PersonServiceTest {
     }
 }
 
-    /*
-        when(delete("/person?firstName=John&lastName=Boyd&address=address&city=city&zip=zip&phone=phone&email=email")).thenReturn(null);
-        //Mettre les paramètres attendus dans la méthode deletePerson
-        verify(personDAO, times(1)).deletePerson("John", "Boyd");
-        // Si blocage, regardez autres méthodes de tests (when, then return) / créer une personne pour la supp.
-  }
-*/
 

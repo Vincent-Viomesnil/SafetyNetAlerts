@@ -23,7 +23,7 @@ import java.util.List;
     //Renvoie une liste à null => méthode addPErson sauvegarde puis méthode getPersons renvoie l'objet enregistré mais pas setté donc null
 
     @PostMapping("/person")
-    public boolean addPerson(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String address, @RequestParam String city, @RequestParam String zip, @RequestParam String phone, @RequestParam String email)/*Person person*/ {
+    public boolean addPerson(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String address, @RequestParam String city, @RequestParam String zip, @RequestParam String phone, @RequestParam String email) {
         Person person = new Person(firstName, lastName, address, city, zip, phone, email);
         return personService.addPerson(person);
           /* List<Person> newPerson = personService.addPerson(person);
