@@ -2,6 +2,7 @@ package com.safetynetalerts.webapp.controller;
 
 
 import com.safetynetalerts.webapp.model.FireStation;
+import com.safetynetalerts.webapp.model.FireStationByStationNumber;
 import com.safetynetalerts.webapp.service.FireStationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,11 @@ public class FireStationController {
     @GetMapping("/firestation")
     public Iterable<FireStation> getFireStations() {
         return fireStationService.getFireStations();
+    }
+
+    @GetMapping("/firestation?stationNumber")
+    public Iterable<FireStationByStationNumber> getPersonsListFromStationNumber(@RequestParam String station) {
+        return fireStationService.getPersonsListFromStationNumber(station);
     }
 
     @PostMapping("/firestation")

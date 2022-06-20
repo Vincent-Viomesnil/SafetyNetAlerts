@@ -1,8 +1,11 @@
 package com.safetynetalerts.webapp.dao;
 
 import com.safetynetalerts.webapp.data.Data;
+import com.safetynetalerts.webapp.data.UrlFirestation;
 import com.safetynetalerts.webapp.model.FireStation;
+import com.safetynetalerts.webapp.model.FireStationByStationNumber;
 import com.safetynetalerts.webapp.repository.FireStationsRepository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 public class FireStationDAO implements FireStationsRepository {
 
@@ -31,5 +34,15 @@ public class FireStationDAO implements FireStationsRepository {
             }
         }
         return false;
+    }
+
+    @Override
+    public Iterable<FireStationByStationNumber> findByStationNumber(String station) {
+        for (FireStation currentFireStation : Data.getFireStations()) {
+            if (currentFireStation.getStation().equals(station)) {
+                return UrlFirestation.getByStationNumber();
+            }
+        }
+        return null;
     }
 }

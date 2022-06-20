@@ -2,7 +2,9 @@ package com.safetynetalerts.webapp.service;
 
 import com.safetynetalerts.webapp.dao.FireStationDAO;
 import com.safetynetalerts.webapp.model.FireStation;
+import com.safetynetalerts.webapp.model.FireStationByStationNumber;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class FireStationService {
@@ -24,5 +26,9 @@ public class FireStationService {
 
     public boolean updateFireStation(String address, String station) {
         return fireStationDAO.updateFireStation(address, station);
+    }
+
+    public Iterable<FireStationByStationNumber> getPersonsListFromStationNumber(String station) {
+        return fireStationDAO.findByStationNumber(station);
     }
 }
