@@ -3,8 +3,8 @@ package com.safetynetalerts.webapp.service;
 import com.safetynetalerts.webapp.dao.FireStationDAO;
 import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.model.FireStationByStationNumber;
+import com.safetynetalerts.webapp.model.Person;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class FireStationService {
@@ -30,5 +30,9 @@ public class FireStationService {
 
     public Iterable<FireStationByStationNumber> getPersonsListFromStationNumber(String station) {
         return fireStationDAO.findByStationNumber(station);
+    }
+
+    public Iterable<Person> getPersonsListsFromStationNumber(String station) {
+        return fireStationDAO.getPersonsListsFromStationNumber(station);
     }
 }

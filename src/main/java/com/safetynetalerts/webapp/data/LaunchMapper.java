@@ -13,8 +13,6 @@ public class LaunchMapper {
             ObjectMapper mapper = new ObjectMapper();
             Data data = mapper.readValue(new File("src/main/resources/data.json"), Data.class);
             System.out.println(data.toString());
-            UrlFirestation urlFirestation = mapper.readValue(new File("src/main/resources/data.json"), UrlFirestation.class);
-            System.out.println(urlFirestation.toString());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
