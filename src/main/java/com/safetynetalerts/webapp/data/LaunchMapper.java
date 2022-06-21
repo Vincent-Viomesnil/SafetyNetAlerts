@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class LaunchMapper {
-    public LaunchMapper launchMapper() {
+    public void launchMapper() {
 
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -16,6 +16,5 @@ public class LaunchMapper {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    return null;
     }
 }

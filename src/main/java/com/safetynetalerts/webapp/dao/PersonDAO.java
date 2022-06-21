@@ -12,11 +12,7 @@ public class PersonDAO implements PersonsRepository {
 
     @Override
     public boolean savePerson(Person person) {
-        //Person newPerson = new Person("first", "last", "add", "city", "zip", "phone", "email");
-        //      return savePerson(newPerson);
-       /* List<Person> savePerson = null;
-        savePerson.listIterator().add(new Person("first", "last", "add", "city", "zip", "phone", "email"));
-        return savePerson;*/
+
 
         return Data.getPersons().add(person);
     }
@@ -26,10 +22,6 @@ public class PersonDAO implements PersonsRepository {
         return Data.getPersons();
     }
 
-   /* @Override
-    public boolean deletePerson(Person person) {
-        return Data.getPersons().remove(person);
-    }*/
 
     @Override
     public boolean deletePerson(String firstName, String lastName) {
@@ -53,24 +45,6 @@ public class PersonDAO implements PersonsRepository {
                 return false;
             }
 
-
-
-
-            //Sinon voir méthode "Collection List" pour update
-        // return Data.getPersons().contains(person);
-
-
-    /*    for (Person currentPerson : Data.getPersons()) {
-            if ((currentPerson.getFirstName() == person.getFirstName()) && (currentPerson.getLastName() == person.getLastName())) {
-                currentPerson.setAddress(person.getAddress());
-                currentPerson.setCity(person.getCity());
-                currentPerson.setZip(person.getZip());
-                currentPerson.setPhone(person.getPhone());
-                currentPerson.setEmail(person.getEmail());
-
-                return updatePerson(currentPerson);
-            }
-        } return true; */
     }
 
 

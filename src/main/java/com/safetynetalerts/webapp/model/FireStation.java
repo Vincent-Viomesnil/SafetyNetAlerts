@@ -8,6 +8,7 @@ public class FireStation {
     private String address;
     private String station; //private Integer station
 
+
     public FireStation() {}
 
     public  FireStation(String address, String station) {
@@ -34,7 +35,7 @@ public class FireStation {
 
     @Override
         public String toString() {
-            return "Firestation [address: " +getAddress()+ ", station: " +getStation()+"] \n";
+            return "Firestation [address: " +getAddress()+ ", station: " +getStation()+"]\n";
         }
     }
 

@@ -24,16 +24,9 @@ public class Person {
         this.zip = zip;
         this.phone = phone;
         this.email = email;
-    }
-
-    public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public void PersonId(String firstName, String lastName) {
 
     }
+
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -93,9 +86,7 @@ public class Person {
 
     @Override
     public String toString() {
-       return "Person [firstName: " +getFirstName() + ", lastName: " + getLastName() + ", address: " + getAddress() + ", city: " + getCity() + ", zip: " + getZip() + ", phone: " + getPhone() + ", mail: " + getEmail() +"] \n";
+       return "Person [firstName: " +getFirstName() + ", lastName: " + getLastName() + ", address: " + getAddress() + ", city: " + getCity() + ", zip: " + getZip() + ", phone: " + getPhone() + ", mail: " + getEmail() +"]\n";
     }
-
-
     }
 
