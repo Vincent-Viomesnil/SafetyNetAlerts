@@ -1,14 +1,11 @@
 package com.safetynetalerts.webapp.controller;
 
-import com.safetynetalerts.webapp.dao.PersonDAO;
-import com.safetynetalerts.webapp.data.Data;
+import com.safetynetalerts.webapp.model.PersonsByStationNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.service.PersonService;
-
-import java.util.List;
 
 @RestController
     public class PersonController {
@@ -21,6 +18,13 @@ import java.util.List;
         return personService.getPersons();
     }
     //Renvoie une liste à null => méthode addPErson sauvegarde puis méthode getPersons renvoie l'objet enregistré mais pas setté donc null
+
+    /*
+    @GetMapping("/fire")
+    public Iterable<PersonsByStationNumber> getPersonsByFirstname(@RequestParam String lastName) {
+        return personService.getPersonsByFirstname(lastName);
+    }
+*/
 
     @PostMapping("/person")
     public boolean addPerson(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String address, @RequestParam String city, @RequestParam String zip, @RequestParam String phone, @RequestParam String email) {

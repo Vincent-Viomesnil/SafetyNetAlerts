@@ -2,7 +2,7 @@ package com.safetynetalerts.webapp.controller;
 
 
 import com.safetynetalerts.webapp.model.FireStation;
-import com.safetynetalerts.webapp.model.Person;
+import com.safetynetalerts.webapp.dto.PersonsListByStationNumberDTO;
 import com.safetynetalerts.webapp.service.FireStationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +24,7 @@ public class FireStationController {
         return fireStationService.getPersonsListFromStationNumber(station);
     }*/
    @GetMapping("/firestation/{station}")
-   public Iterable<Person> getPL(@RequestParam String station) {
+   public PersonsListByStationNumberDTO getPersonsListsFromStationNumber(@PathVariable String station) {
        return fireStationService.getPersonsListsFromStationNumber(station);
    }
 

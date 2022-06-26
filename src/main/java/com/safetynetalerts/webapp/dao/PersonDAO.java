@@ -1,11 +1,12 @@
 package com.safetynetalerts.webapp.dao;
 
 import com.safetynetalerts.webapp.data.Data;
+import com.safetynetalerts.webapp.model.PersonsByStationNumber;
 import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.repository.PersonsRepository;
 
-
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PersonDAO implements PersonsRepository {
 
@@ -19,8 +20,9 @@ public class PersonDAO implements PersonsRepository {
 
     @Override
     public Iterable<Person> findAll() {
-        return Data.getPersons();
+      return Data.getPersons();
     }
+
 
 
     @Override
@@ -44,7 +46,18 @@ public class PersonDAO implements PersonsRepository {
         }
                 return false;
             }
+ /*
+    public Iterable<PersonsByStationNumber> getPersonsByFirstname(String lastName) {
+        List<PersonsByStationNumber> personListByFirstname = Data.getFireStationByStationNumbers().stream()
+                .filter(person -> person.getLastName().equals(lastName))
+               // .map(person -> person.getFirstName().
+                .collect(Collectors.toList());
 
+        return personListByFirstname;
     }
+
+
+     */
+}
 
 

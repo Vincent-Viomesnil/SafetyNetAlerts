@@ -1,14 +1,11 @@
 package com.safetynetalerts.webapp.data;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.safetynetalerts.webapp.model.FireStation;
-import com.safetynetalerts.webapp.model.FireStationByStationNumber;
+import com.safetynetalerts.webapp.model.PersonsByStationNumber;
 import com.safetynetalerts.webapp.model.MedicalRecord;
 import com.safetynetalerts.webapp.model.Person;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +14,7 @@ public class Data {
     private static List<Person> persons = new ArrayList<Person>();
     private static List<MedicalRecord> medicalrecords= new ArrayList<MedicalRecord>();
     private static List<FireStation> firestations= new ArrayList<FireStation>();
-    private static List<FireStationByStationNumber> fireStationByStationNumbers = new ArrayList<>();
+    private static List<PersonsByStationNumber> personsByStationNumbers = new ArrayList<>();
 
 
 
@@ -33,12 +30,12 @@ public class Data {
         return medicalrecords;
     }
 
-    public static List<FireStationByStationNumber> getFireStationByStationNumbers() {
-        return fireStationByStationNumbers;
+    public static List<PersonsByStationNumber> getFireStationByStationNumbers() {
+        return personsByStationNumbers;
     }
 
-    public static void setFireStationByStationNumbers(List<FireStationByStationNumber> fireStationByStationNumbers) {
-        Data.fireStationByStationNumbers = fireStationByStationNumbers;
+    public static void setFireStationByStationNumbers(List<PersonsByStationNumber> personsByStationNumbers) {
+        Data.personsByStationNumbers = personsByStationNumbers;
     }
 
     public void setPersons(List<Person> persons) {
