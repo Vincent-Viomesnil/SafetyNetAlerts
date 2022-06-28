@@ -5,6 +5,7 @@ import com.safetynetalerts.webapp.model.PersonsByStationNumber;
 import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.repository.PersonsRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,18 +47,20 @@ public class PersonDAO implements PersonsRepository {
         }
                 return false;
             }
- /*
-    public Iterable<PersonsByStationNumber> getPersonsByFirstname(String lastName) {
-        List<PersonsByStationNumber> personListByFirstname = Data.getFireStationByStationNumbers().stream()
-                .filter(person -> person.getLastName().equals(lastName))
-               // .map(person -> person.getFirstName().
-                .collect(Collectors.toList());
 
-        return personListByFirstname;
+    public List<Person> getPersonsListByAddress(String address){
+        List<Person> personsListByAddress = new ArrayList<>();
+
+        for (Person person : Data.getPersons()) {
+
+            if (person.getAddress().equals(address)) {
+                personsListByAddress.add(person);
+            }
+        }
+
+        return personsListByAddress;
     }
 
-
-     */
 }
 
 

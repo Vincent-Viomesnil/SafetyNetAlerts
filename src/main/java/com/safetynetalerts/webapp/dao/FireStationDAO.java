@@ -41,26 +41,8 @@ public class FireStationDAO implements FireStationsRepository {
         return false;
     }
 
-/*
+
     @Override
-    public Iterable<FireStationByStationNumber> findByStationNumber(String station) {
-        for (FireStation currentFireStation : Data.getFireStations()) {
-            if (currentFireStation.getStation().equals(station)) {
-                FireStationByStationNumber fireStationByStationNumber = new FireStationByStationNumber();
-                Person person = new Person();
-
-                if (fireStationByStationNumber.getAddress() == person.getAddress()) {
-
-                    fireStationByStationNumber.getFirstName();
-                    fireStationByStationNumber.getLastName();
-                    fireStationByStationNumber.getPhone();
-                    return Data.getFireStationByStationNumbers();
-                }
-            }
-        }
-        return null;
-    } */
-
     public PersonsListByStationNumberDTO getPersonsListsFromStationNumber(String station) {
         List<FireStation> firestations = new ArrayList<FireStation>();
         PersonsListByStationNumberDTO personList = new PersonsListByStationNumberDTO();
@@ -81,21 +63,14 @@ public class FireStationDAO implements FireStationsRepository {
 
                     personList.getPersonsByStationNumbers().add(personsByStationNumber);
 
-                    for (PersonsByStationNumber currentPersonsByStationNumber : personList.getPersonsByStationNumbers()) {
-                       MedicalRecord medicalRecord = new MedicalRecord();
-                        if (medicalRecord.getFirstName().equals(currentPersonsByStationNumber.getFirstName())) {
-                            for (MedicalRecord currentMedicalRecord: Data.getMedicalRecords()) {
-                                currentMedicalRecord.getAgeCalculator();
+                    for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
+
+                        if (medicalRecord.getFirstName().equals(personsByStationNumber.getFirstName())) {
+                            if (medicalRecord.getAge() > 18) {
+                                personList.setMajeur(personList.getMajeur()+1);
+                            } else {
+                                personList.setMineur(personList.getMineur()+1);
                             }
-//                            for (int i = 0; i < personList.getPersonsByStationNumbers().size(); i++) {
-//                                if (medicalRecord.getAge() > 18) {
-//                                    majeur++;
-//                                } else mineur++;
-//                            }
-
-                            //méthode à mettre ici
-                            // pour cq person de la liste on doit récupérer les pers dans medical record. caalcul age. on incrémente boucle (int...)
-
                         }
                     }
                 }

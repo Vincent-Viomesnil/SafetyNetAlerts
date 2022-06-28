@@ -20,8 +20,7 @@ public class MedicalRecord {
     private List<String> medications;
     private List<String> allergies;
     private Integer age;
-    private int mineur;
-    private int majeur;
+
 
 
     public MedicalRecord() {
@@ -88,20 +87,9 @@ public class MedicalRecord {
         this.age = age;
     }
 
-    public int getAgeCalculator() {
-        MedicalRecord medicalRecord = new MedicalRecord();
-
-        for (int i = 0; i < Data.getMedicalRecords().size(); i++) {
-            if (medicalRecord.getAge() > 18) {
-                majeur++;
-            } else mineur++;
-        }
-        return majeur + mineur;
-    }
-
 
     @Override
     public String toString() {
-        return "MedicalRecord [firstName: " + getFirstName() + ", lastName: " + getLastName() + ", birthdate: " + getBirthdate() + ", age :" +getAge() + ", medications: " + getMedications() + ", allergies:" + getAllergies() +"] \n";
+        return "MedicalRecord [firstName: " + getFirstName() + ", lastName: " + getLastName() + ", birthdate: " + getBirthdate() + ", medications: " + getMedications() + ", allergies:" + getAllergies() +"] \n";
     }
 }
