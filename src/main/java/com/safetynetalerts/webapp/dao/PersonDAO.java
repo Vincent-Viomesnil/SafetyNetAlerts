@@ -1,21 +1,17 @@
 package com.safetynetalerts.webapp.dao;
 
 import com.safetynetalerts.webapp.data.Data;
-import com.safetynetalerts.webapp.model.PersonsByStationNumber;
 import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.repository.PersonsRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PersonDAO implements PersonsRepository {
 
 
     @Override
     public boolean savePerson(Person person) {
-
-
         return Data.getPersons().add(person);
     }
 
@@ -33,7 +29,6 @@ public class PersonDAO implements PersonsRepository {
 
     @Override
     public boolean updatePerson(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
-
         for (Person currentPerson : Data.getPersons()) {
             if (currentPerson.getFirstName().equals(firstName) && currentPerson.getLastName().equals(lastName)) {
                 currentPerson.setAddress(address);
@@ -50,15 +45,22 @@ public class PersonDAO implements PersonsRepository {
 
     public List<Person> getPersonsListByAddress(String address){
         List<Person> personsListByAddress = new ArrayList<>();
-
         for (Person person : Data.getPersons()) {
-
             if (person.getAddress().equals(address)) {
                 personsListByAddress.add(person);
             }
         }
-
         return personsListByAddress;
+    }
+
+    public List<Person> getPersonsListHome(String address) {
+        List<Person> personsListHome = new ArrayList<>();
+        for (Person person : Data.getPersons()) {
+            if (person.getAddress().equals(address)){
+                personsListHome.add(person);
+            }
+        }
+        return personsListHome;
     }
 
 }

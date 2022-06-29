@@ -1,23 +1,24 @@
-package com.safetynetalerts.webapp.model;
+package com.safetynetalerts.webapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.safetynetalerts.webapp.model.Person;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ChildAlertDTO { //A mettre dans DTO
-
+public class ChildAlertDTO {
         private String firstName;
         private String lastName;
-        private List<Person> home = new ArrayList<>();
         private Integer age;
+        private List<Person> home = new ArrayList<>();
 
-    public ChildAlertDTO(String firstName, String lastName, List<Person> home, Integer age) {
+    public ChildAlertDTO(String firstName, String lastName, Integer age, List<Person> home) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.home = home;
         this.age = age;
+        this.home = home;
+
     }
 
     public ChildAlertDTO(){
@@ -40,14 +41,6 @@ public class ChildAlertDTO { //A mettre dans DTO
         this.lastName = lastName;
     }
 
-    public List<Person> getHome() {
-        return home;
-    }
-
-    public void setHome(List<Person> home) {
-        this.home = home;
-    }
-
     public Integer getAge() {
         return age;
     }
@@ -56,14 +49,24 @@ public class ChildAlertDTO { //A mettre dans DTO
         this.age = age;
     }
 
+    public List<Person> getHome() {
+       return home;
+    }
+
+    public void setHome(List<Person>  home) {
+        this.home = home;
+    }
+
+
+
     @Override
     public String toString() {
         return "ChildAlert{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", home=" + home +
                 ", age=" + age +
-                '}';
+                ", home=" + home +
+               '}';
     }
 }
 

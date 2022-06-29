@@ -84,6 +84,14 @@ public class Person {
         return lastName;
     }
 
+    public String getFirstNameAndLastName(String firstName, String lastName){
+        return firstName + lastName;
+    }
+    public void setFirstNameAndLastName(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     @Override
     public String toString() {
        return "Person [firstName: " +getFirstName() + ", lastName: " + getLastName() + ", address: " + getAddress() + ", city: " + getCity() + ", zip: " + getZip() + ", phone: " + getPhone() + ", mail: " + getEmail() +"]\n";

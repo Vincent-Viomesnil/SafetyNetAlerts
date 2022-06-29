@@ -2,7 +2,6 @@ package com.safetynetalerts.webapp.dto;
 
 import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.MedicalRecord;
-import com.safetynetalerts.webapp.model.PersonsByStationNumber;
 
 import java.util.ArrayList;
 import java.util.List;

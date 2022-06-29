@@ -1,12 +1,11 @@
 package com.safetynetalerts.webapp.dao;
 
 import com.safetynetalerts.webapp.data.Data;
-import com.safetynetalerts.webapp.dto.MedicalRecordDTO;
 import com.safetynetalerts.webapp.dto.PersonsListByStationNumberDTO;
 import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.model.MedicalRecord;
 import com.safetynetalerts.webapp.model.Person;
-import com.safetynetalerts.webapp.model.PersonsByStationNumber;
+import com.safetynetalerts.webapp.dto.PersonByStationNumberDTO;
 import com.safetynetalerts.webapp.repository.FireStationsRepository;
 
 import java.util.ArrayList;
@@ -54,18 +53,18 @@ public class FireStationDAO implements FireStationsRepository {
         for (FireStation firestation : firestations) {
             for (Person person : Data.getPersons()) {
                 if (firestation.getAddress().equals(person.getAddress())) {
-                    PersonsByStationNumber personsByStationNumber = new PersonsByStationNumber();
+                    PersonByStationNumberDTO personByStationNumberDTO = new PersonByStationNumberDTO();
 
-                    personsByStationNumber.setFirstName(person.getFirstName());
-                    personsByStationNumber.setLastName(person.getLastName());
-                    personsByStationNumber.setPhone(person.getPhone());
-                    personsByStationNumber.setAddress(person.getAddress());
+                    personByStationNumberDTO.setFirstName(person.getFirstName());
+                    personByStationNumberDTO.setLastName(person.getLastName());
+                    personByStationNumberDTO.setPhone(person.getPhone());
+                    personByStationNumberDTO.setAddress(person.getAddress());
 
-                    personList.getPersonsByStationNumbers().add(personsByStationNumber);
+                    personList.getPersonsByStationNumbers().add(personByStationNumberDTO);
 
                     for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
 
-                        if (medicalRecord.getFirstName().equals(personsByStationNumber.getFirstName())) {
+                        if (medicalRecord.getFirstName().equals(personByStationNumberDTO.getFirstName())) {
                             if (medicalRecord.getAge() > 18) {
                                 personList.setMajeur(personList.getMajeur()+1);
                             } else {

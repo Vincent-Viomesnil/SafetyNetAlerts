@@ -1,6 +1,5 @@
 package com.safetynetalerts.webapp.repository;
 
-import com.safetynetalerts.webapp.model.PersonsByStationNumber;
 import com.safetynetalerts.webapp.model.Person;
 import org.springframework.stereotype.Repository;
 

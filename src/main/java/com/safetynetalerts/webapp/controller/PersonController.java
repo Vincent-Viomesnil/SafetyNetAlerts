@@ -1,6 +1,5 @@
 package com.safetynetalerts.webapp.controller;
 
-import com.safetynetalerts.webapp.model.PersonsByStationNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

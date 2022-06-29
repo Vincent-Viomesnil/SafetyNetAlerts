@@ -1,7 +1,6 @@
 package com.safetynetalerts.webapp.service;
 
 import com.safetynetalerts.webapp.dao.PersonDAO;
-import com.safetynetalerts.webapp.model.PersonsByStationNumber;
 import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.repository.PersonsRepository;
 import org.springframework.stereotype.Service;

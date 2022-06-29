@@ -1,24 +1,24 @@
-package com.safetynetalerts.webapp.model;
+package com.safetynetalerts.webapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PersonsByStationNumber {
+public class PersonByStationNumberDTO {
 
     private String firstName;
     private String lastName;
     private String address;
     private String phone;
 
-    public PersonsByStationNumber(String firstName, String lastName, String address, String phone) {
+    public PersonByStationNumberDTO(String firstName, String lastName, String address, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.phone = phone;
     }
 
-    public PersonsByStationNumber() {
+    public PersonByStationNumberDTO() {
 
     }
 

@@ -2,26 +2,24 @@ package com.safetynetalerts.webapp.dto;
 
 import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.FireStation;
-import com.safetynetalerts.webapp.model.MedicalRecord;
-import com.safetynetalerts.webapp.model.PersonsByStationNumber;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PersonsListByStationNumberDTO {
 
-    private List<PersonsByStationNumber> personsByStationNumbers = new ArrayList<PersonsByStationNumber>();
+    private List<PersonByStationNumberDTO> personByStationNumberDTO = new ArrayList<PersonByStationNumberDTO>();
     private int mineur;
     private int majeur;
    // private MedicalRecord medicalRecord = new MedicalRecord();
   //  private AgeCalculatorService ageCalculatorService = new AgeCalculatorService();
 
-    public List<PersonsByStationNumber> getPersonsByStationNumbers() {
-        return personsByStationNumbers;
+    public List<PersonByStationNumberDTO> getPersonsByStationNumbers() {
+        return personByStationNumberDTO;
     }
 
-    public void setPersonsByStationNumbers(List<PersonsByStationNumber> personsByStationNumbers) {
-        personsByStationNumbers = this.personsByStationNumbers;
+    public void setPersonsByStationNumbers(List<PersonByStationNumberDTO> personByStationNumberDTOS) {
+        personByStationNumberDTOS = this.personByStationNumberDTO;
     }
 
 
@@ -37,26 +35,6 @@ public class PersonsListByStationNumberDTO {
 
         return fireStationList;
     }
-
-
-//
-//    public int getAgeCalculator() {
-//        for (int i = 0; i < Data.getMedicalRecords().size(); i++) {
-//            if (medicalRecord.getAge() > 18) {
-//                majeur++;
-//            } else mineur++;
-//        }
-//        return majeur + mineur;
-//    }
-
-//
-//    public AgeCalculatorService getAgeCalculatorService() {
-//        return ageCalculatorService;
-//    }
-//
-//    public void setAgeCalculatorService(AgeCalculatorService ageCalculatorService) {
-//        this.ageCalculatorService = ageCalculatorService;
-//    }
 
     public int getMineur() {
         return mineur;
@@ -77,7 +55,7 @@ public class PersonsListByStationNumberDTO {
     @Override
     public String toString() {
         return "PersonsListByStationNumberDTO{" +
-                "personsByStationNumbers=" + personsByStationNumbers +
+                "personsByStationNumbers=" + personByStationNumberDTO +
                 ", mineur=" + mineur +
                 ", majeur=" + majeur +
                 '}';
