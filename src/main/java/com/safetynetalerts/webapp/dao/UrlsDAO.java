@@ -1,14 +1,10 @@
 package com.safetynetalerts.webapp.dao;
 
 import com.safetynetalerts.webapp.data.Data;
-import com.safetynetalerts.webapp.dto.ChildAlertDTO;
-import com.safetynetalerts.webapp.dto.PersonByStationNumberDTO;
-import com.safetynetalerts.webapp.dto.PersonsListByStationNumberDTO;
-import com.safetynetalerts.webapp.dto.PhoneAlertDTO;
+import com.safetynetalerts.webapp.dto.*;
 import com.safetynetalerts.webapp.model.*;
 import com.safetynetalerts.webapp.repository.UrlsRepository;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,8 +49,9 @@ public class UrlsDAO implements UrlsRepository {
         List<FireStation> firestations = new ArrayList<FireStation>();
         PersonsListByStationNumberDTO personList = new PersonsListByStationNumberDTO();
         PhoneAlertDTO phoneAlertList = new PhoneAlertDTO();
+        FireStationDAO fireStationDAO = new FireStationDAO();
 
-        firestations = personList.getFirestationsByStationNumber(station);
+        firestations = fireStationDAO.getFirestationsByStationNumber(station);
         //méthode qui retourne l'ensemble des firestation avec comme paramètre le numéro de station
 
         for (FireStation firestation : firestations) {
@@ -66,6 +63,39 @@ public class UrlsDAO implements UrlsRepository {
             }
             return phoneAlertList;
 
+    }
+
+    @Override
+    public FireAddressListDTO getPersonsListByAddress(String address) {
+        List<FireStation> fireStations = new ArrayList<>();
+        FireAddressListDTO fireAddressList = new FireAddressListDTO();
+        FireStationDAO fireStationDAO = new FireStationDAO();
+
+        fireStations = fireStationDAO.getFirestationsByAddress(address);
+
+        for (FireStation fireStation : fireStations) {
+            for (Person person : Data.getPersons()) {
+                if (fireStation.getAddress().equals(person.getAddress())){
+                    MedicalRecord medicalRecord = new MedicalRecord();
+                    FireAddressDTO fireAddressDTO = new FireAddressDTO();
+
+                    fireAddressDTO.setStationAddress(fireStation.getAddress());
+                    fireAddressDTO.setStationNumber(fireStation.getStation());
+                    fireAddressDTO.setFirstName(person.getFirstName());
+                    fireAddressDTO.setLastName(person.getLastName());
+                    fireAddressDTO.setAge(medicalRecord.getAge());
+                    fireAddressDTO.setMedications(medicalRecord.getMedications());
+                    fireAddressDTO.setAllergies(medicalRecord.getAllergies());
+
+                    fireAddressList.getFireAddressList().add(fireAddressDTO);
+
+                }
+            }
         }
+
+        return fireAddressList;
+
+    }
+
     }
 

@@ -41,13 +41,39 @@ public class FireStationDAO implements FireStationsRepository {
     }
 
 
+    public List<FireStation> getFirestationsByStationNumber(String stationNumber){
+        List<FireStation> fireStationList = new ArrayList<>();
+
+        for (FireStation fireStation : Data.getFireStations()) {
+
+            if (fireStation.getStation().equals(stationNumber)) {
+                fireStationList.add(fireStation);
+            }
+        }
+
+        return fireStationList;
+    }
+
+    public List<FireStation> getFirestationsByAddress(String address){
+        List<FireStation> fireStationList = new ArrayList<>();
+
+        for (FireStation fireStation : Data.getFireStations()) {
+
+            if (fireStation.getAddress().equals(address)) {
+                fireStationList.add(fireStation);
+            }
+        }
+
+        return fireStationList;
+    }
+
     @Override
     public PersonsListByStationNumberDTO getPersonsListsFromStationNumber(String station) {
         List<FireStation> firestations = new ArrayList<FireStation>();
         PersonsListByStationNumberDTO personList = new PersonsListByStationNumberDTO();
+        FireStationDAO fireStationDAO = new FireStationDAO();
 
-
-        firestations = personList.getFirestationsByStationNumber(station);
+        firestations = fireStationDAO.getFirestationsByStationNumber(station);
         //méthode qui retourne l'ensemble des firestation avec comme paramètre le numéro de station
 
         for (FireStation firestation : firestations) {

@@ -23,19 +23,6 @@ public class PersonsListByStationNumberDTO {
     }
 
 
-    public List<FireStation> getFirestationsByStationNumber(String stationNumber){
-        List<FireStation> fireStationList = new ArrayList<>();
-
-        for (FireStation fireStation : Data.getFireStations()) {
-
-            if (fireStation.getStation().equals(stationNumber)) {
-                fireStationList.add(fireStation);
-            }
-        }
-
-        return fireStationList;
-    }
-
     public int getMineur() {
         return mineur;
     }

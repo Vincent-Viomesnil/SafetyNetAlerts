@@ -1,8 +1,6 @@
 package com.safetynetalerts.webapp.controller;
 
-import com.safetynetalerts.webapp.dto.ChildAlertDTO;
-import com.safetynetalerts.webapp.dto.PersonsListByStationNumberDTO;
-import com.safetynetalerts.webapp.dto.PhoneAlertDTO;
+import com.safetynetalerts.webapp.dto.*;
 import com.safetynetalerts.webapp.service.UrlsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +22,11 @@ public class UrlsController {
 
     @GetMapping("/phoneAlert/{station}")
     public PhoneAlertDTO getPhoneNumberByFirestationNumber(@PathVariable String station) {
-        return UrlsService.getPhoneNumberListByFirestationNumber(station);
+        return urlsService.getPhoneNumberListByFirestationNumber(station);
+    }
+
+    @GetMapping("/fire/{address}")
+    public FireAddressListDTO getPersonsListByAddress(@PathVariable String address) {
+        return urlsService.getPersonsListByAddress(address);
     }
 }

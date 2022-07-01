@@ -2,6 +2,8 @@ package com.safetynetalerts.webapp.service;
 
 import com.safetynetalerts.webapp.dao.UrlsDAO;
 import com.safetynetalerts.webapp.dto.ChildAlertDTO;
+import com.safetynetalerts.webapp.dto.FireAddressDTO;
+import com.safetynetalerts.webapp.dto.FireAddressListDTO;
 import com.safetynetalerts.webapp.dto.PhoneAlertDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,4 +23,7 @@ public class UrlsService {
         return urlsDAO.getChildListByAddress(address);
     }
 
+    public FireAddressListDTO getPersonsListByAddress(String address) {
+        return urlsDAO.getPersonsListByAddress(address);
+    }
 }
