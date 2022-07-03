@@ -66,6 +66,15 @@ public class FireStationDAO implements FireStationsRepository {
 
         return fireStationList;
     }
+    public String getFirestationByAddress(String address){
+        for (FireStation fireStation : Data.getFireStations()) {
+            if (fireStation.getAddress().equals(address)) {
+               return fireStation.getStation();
+            }
+        }
+
+        return null;
+    }
 
     @Override
     public PersonsListByStationNumberDTO getPersonsListsFromStationNumber(String station) {

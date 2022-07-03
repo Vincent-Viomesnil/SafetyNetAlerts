@@ -1,6 +1,7 @@
 package com.safetynetalerts.webapp.data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.safetynetalerts.webapp.dto.FireAddressDTO;
 
 
 import java.io.File;

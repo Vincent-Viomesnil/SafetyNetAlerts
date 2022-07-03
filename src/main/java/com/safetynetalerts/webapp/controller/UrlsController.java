@@ -29,4 +29,13 @@ public class UrlsController {
     public FireAddressListDTO getPersonsListByAddress(@PathVariable String address) {
         return urlsService.getPersonsListByAddress(address);
     }
+    @GetMapping("flood/stations/{station}")
+    public List<HomeByStationNumberDTO> getHomeByStationNumber(@PathVariable String station){
+        return urlsService.getHomeByStationNumber(station);
+    }
+
+    @GetMapping("personInfo/{firstName}/{lastName}")
+    public List<PersonInfoDTO> getPersonInfoList(@PathVariable String firstName, @PathVariable String lastName){
+        return urlsService.getPersonInfoList(firstName, lastName);
+    }
 }

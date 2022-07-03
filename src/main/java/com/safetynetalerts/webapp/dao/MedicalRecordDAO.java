@@ -1,13 +1,17 @@
 package com.safetynetalerts.webapp.dao;
 
 import com.safetynetalerts.webapp.data.Data;
+import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.model.MedicalRecord;
 import com.safetynetalerts.webapp.repository.MedicalRecordsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class MedicalRecordDAO implements MedicalRecordsRepository {
+
 
 
     @Override
@@ -38,4 +42,24 @@ public class MedicalRecordDAO implements MedicalRecordsRepository {
         return false;
     }
 
+    public List<MedicalRecord> getAgeByPerson(String firstName, String Lastname) {
+        List<MedicalRecord> medicalRecordList = new ArrayList<>();
+        for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
+            if (medicalRecord.getFirstName().equals(firstName) && medicalRecord.getLastName().equals(Lastname)) {
+                medicalRecord.getAge();
+                medicalRecordList.add(medicalRecord);
+            }
+        } return medicalRecordList;
+    }
+
+
+    public MedicalRecord getByFirstName(String firstName) {
+
+        for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
+            if (medicalRecord.getFirstName().equals(firstName)) {
+                return medicalRecord;
+            }
+        }
+        return null;
+    }
 }

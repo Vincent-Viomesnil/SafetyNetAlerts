@@ -53,14 +53,14 @@ public class PersonDAO implements PersonsRepository {
         return personsListByAddress;
     }
 
-    public List<Person> getPersonsListHome(String address) {
-        List<Person> personsListHome = new ArrayList<>();
+    public List<Person> getPersonByFirstNameAndLastName(String firstName, String lastName) {
+        List<Person> personList = new ArrayList<Person>();
         for (Person person : Data.getPersons()) {
-            if (person.getAddress().equals(address)){
-                personsListHome.add(person);
+            if (person.getFirstName().equals(firstName) && (person.getLastName().equals(lastName))) {
+                personList.add(person);
             }
         }
-        return personsListHome;
+        return personList;
     }
 
 }

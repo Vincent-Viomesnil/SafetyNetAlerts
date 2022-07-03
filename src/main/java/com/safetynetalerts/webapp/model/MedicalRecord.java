@@ -90,6 +90,6 @@ public class MedicalRecord {
 
     @Override
     public String toString() {
-        return "MedicalRecord [firstName: " + getFirstName() + ", lastName: " + getLastName() + ", birthdate: " + getBirthdate() + ", medications: " + getMedications() + ", allergies:" + getAllergies() +"] \n";
+        return "MedicalRecord [firstName: " + getFirstName() + ", lastName: " + getLastName() + ", birthdate: " + getBirthdate() + " , medications: " + getMedications() + ", allergies:" + getAllergies() +"] \n";
     }
 }

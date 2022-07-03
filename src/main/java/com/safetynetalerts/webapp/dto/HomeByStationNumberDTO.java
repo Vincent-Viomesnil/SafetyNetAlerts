@@ -1,20 +1,26 @@
 package com.safetynetalerts.webapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.safetynetalerts.webapp.model.FireStation;
 
-import java.util.ArrayList;
 import java.util.List;
 
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class FireAddressDTO {
+public class HomeByStationNumberDTO {
 
     private String firstName;
-    private String lastName;
-    private Integer age;
+    private String phone;
+    private int age;
     private List<String> medications;
     private List<String> allergies;
 
+    public HomeByStationNumberDTO(String firstName, String phone, int age, List<String> medications, List<String> allergies) {
+        this.firstName = firstName;
+        this.phone = phone;
+        this.age = age;
+        this.medications = medications;
+        this.allergies = allergies;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -24,19 +30,19 @@ public class FireAddressDTO {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -56,19 +62,11 @@ public class FireAddressDTO {
         this.allergies = allergies;
     }
 
-    public FireAddressDTO(String firstName, String lastName, Integer age, List<String> medications, List<String> allergies) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.medications = medications;
-        this.allergies = allergies;
-    }
-
     @Override
     public String toString() {
-        return "FireAddressDTO{" +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+        return "HomeByStationNumberDTO{" +
+                "firstName='" + firstName + '\'' +
+                ", phone='" + phone + '\'' +
                 ", age=" + age +
                 ", medications=" + medications +
                 ", allergies=" + allergies +

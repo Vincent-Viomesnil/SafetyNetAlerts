@@ -69,33 +69,68 @@ public class UrlsDAO implements UrlsRepository {
     public FireAddressListDTO getPersonsListByAddress(String address) {
         List<FireStation> fireStations = new ArrayList<>();
         FireAddressListDTO fireAddressList = new FireAddressListDTO();
+        List<Person> personList = new ArrayList<>();
         FireStationDAO fireStationDAO = new FireStationDAO();
+        PersonDAO personDAO = new PersonDAO();
 
         fireStations = fireStationDAO.getFirestationsByAddress(address);
+        String firestationNumber = fireStationDAO.getFirestationByAddress(address);
+        fireAddressList.setFireStation(firestationNumber);
 
         for (FireStation fireStation : fireStations) {
-            for (Person person : Data.getPersons()) {
-                if (fireStation.getAddress().equals(person.getAddress())){
-                    MedicalRecord medicalRecord = new MedicalRecord();
-                    FireAddressDTO fireAddressDTO = new FireAddressDTO();
+            List<Person> personList2 = personDAO.getPersonsListByAddress(fireStation.getAddress());
+            personList.addAll(personList2);
+                 }
+        MedicalRecordDAO medicalRecordDAO = new MedicalRecordDAO();
 
-                    fireAddressDTO.setStationAddress(fireStation.getAddress());
-                    fireAddressDTO.setStationNumber(fireStation.getStation());
-                    fireAddressDTO.setFirstName(person.getFirstName());
-                    fireAddressDTO.setLastName(person.getLastName());
-                    fireAddressDTO.setAge(medicalRecord.getAge());
-                    fireAddressDTO.setMedications(medicalRecord.getMedications());
-                    fireAddressDTO.setAllergies(medicalRecord.getAllergies());
-
-                    fireAddressList.getFireAddressList().add(fireAddressDTO);
-
-                }
-            }
+        for (Person person : personList) {
+             MedicalRecord medicalRecord = medicalRecordDAO.getByFirstName(person.getFirstName());
+            fireAddressList.getFireAddressList().add(new FireAddressDTO(person.getFirstName(),person.getLastName(), medicalRecord.getAge(),medicalRecord.getMedications(),medicalRecord.getAllergies()));
         }
 
-        return fireAddressList;
-
+      return fireAddressList;
     }
 
+
+
+
+    public List<HomeByStationNumberDTO> getHomeByStationNumber(String station) {
+        List<HomeByStationNumberDTO> homeByStationNumberList = new ArrayList<>();
+        List<Person> personList = new ArrayList<>();
+        List<FireStation> firestations = new ArrayList<FireStation>();
+        FireStationDAO fireStationDAO = new FireStationDAO();
+        PersonDAO personDAO = new PersonDAO();
+
+        firestations = fireStationDAO.getFirestationsByStationNumber(station);
+
+        for (FireStation fireStation : firestations){
+            List<Person> personList2 = personDAO.getPersonsListByAddress(fireStation.getAddress());
+            personList.addAll(personList2);
+        }
+        List<MedicalRecord> medicalRecordList = new ArrayList<>();
+        MedicalRecordDAO medicalRecordDAO = new MedicalRecordDAO();
+        for (Person person : personList) {
+            MedicalRecord medicalRecord = medicalRecordDAO.getByFirstName(person.getFirstName());
+            medicalRecordList.add(medicalRecord);
+
+            homeByStationNumberList.add(new HomeByStationNumberDTO(person.getLastName(),person.getPhone(), medicalRecord.getAge(), medicalRecord.getMedications(), medicalRecord.getAllergies()));
+        }
+        return homeByStationNumberList;
     }
+
+    public List<PersonInfoDTO> getPersonInfoList(String firstName, String lastName) {
+        List<PersonInfoDTO> personInfoList = new ArrayList<>();
+        List<Person> personList = new ArrayList<>();
+        PersonDAO personDAO = new PersonDAO();
+        MedicalRecordDAO medicalRecordDAO = new MedicalRecordDAO();
+
+        personList = personDAO.getPersonByFirstNameAndLastName(firstName,lastName);
+
+        for (Person person : personList){
+            MedicalRecord medicalRecord = medicalRecordDAO.getByFirstName(person.getFirstName());
+            personInfoList.add(new PersonInfoDTO(person.getFirstName(),person.getLastName(),person.getAddress(),medicalRecord.getAge(),person.getEmail(),medicalRecord.getMedications(), medicalRecord.getAllergies()));
+        }
+        return personInfoList;
+    }
+}
 

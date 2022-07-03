@@ -1,9 +1,6 @@
 package com.safetynetalerts.webapp.repository;
 
-import com.safetynetalerts.webapp.dto.ChildAlertDTO;
-import com.safetynetalerts.webapp.dto.FireAddressDTO;
-import com.safetynetalerts.webapp.dto.FireAddressListDTO;
-import com.safetynetalerts.webapp.dto.PhoneAlertDTO;
+import com.safetynetalerts.webapp.dto.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,5 +13,7 @@ public interface UrlsRepository {
     PhoneAlertDTO getPhoneNumberListByFirestationNumber(String station);
 
     FireAddressListDTO getPersonsListByAddress(String address);
+
+    List<HomeByStationNumberDTO> getHomeByStationNumber(String station);
 }
 
