@@ -19,15 +19,6 @@ public class FireStationController {
         return fireStationService.getFireStations();
     }
 
-   /* @GetMapping("/firestation?station")
-    public Iterable<FireStationByStationNumber> getPersonsListFromStationNumber(@RequestParam String station) {
-        return fireStationService.getPersonsListFromStationNumber(station);
-    }*/
-   @GetMapping("/firestation/{station}")
-   public PersonsListByStationNumberDTO getPersonsListsFromStationNumber(@PathVariable String station) {
-       return fireStationService.getPersonsListsFromStationNumber(station);
-   }
-
     @PostMapping("/firestation")
     public boolean addFireStation(@RequestParam String address, @RequestParam String station) {
         FireStation fireStation = new FireStation(address, station);

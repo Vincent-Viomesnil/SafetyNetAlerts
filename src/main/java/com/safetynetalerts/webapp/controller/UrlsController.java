@@ -15,6 +15,12 @@ public class UrlsController {
     @Autowired
     private UrlsService urlsService;
 
+
+    @GetMapping("/firestation/{station}")
+    public PersonsListByStationNumberDTO getPersonsListsFromStationNumber(@PathVariable String station) {
+        return urlsService.getPersonsListsFromStationNumber(station);
+    }
+
     @GetMapping("/childAlert/{address}")
     public List<ChildAlertDTO> getChildListByAddress(@PathVariable String address) {
         return urlsService.getChildListByAddress(address);
@@ -38,4 +44,11 @@ public class UrlsController {
     public List<PersonInfoDTO> getPersonInfoList(@PathVariable String firstName, @PathVariable String lastName){
         return urlsService.getPersonInfoList(firstName, lastName);
     }
+
+    @GetMapping("/communityEmail/{city}")
+    public EmailAlertDTO getCommunityEmailList(@PathVariable String city) {
+        return urlsService.getCommunityEmailList(city);
+    }
+
+
 }

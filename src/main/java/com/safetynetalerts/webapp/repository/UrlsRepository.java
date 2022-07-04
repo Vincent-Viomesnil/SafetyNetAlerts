@@ -8,6 +8,8 @@ import java.util.List;
 @Repository
 public interface UrlsRepository {
 
+    PersonsListByStationNumberDTO getPersonsListsFromStationNumber(String station);
+
     List<ChildAlertDTO> getChildListByAddress(String address);
 
     PhoneAlertDTO getPhoneNumberListByFirestationNumber(String station);
@@ -15,5 +17,7 @@ public interface UrlsRepository {
     FireAddressListDTO getPersonsListByAddress(String address);
 
     List<HomeByStationNumberDTO> getHomeByStationNumber(String station);
+
+    EmailAlertDTO getCommunityEmailList(String city);
 }
 

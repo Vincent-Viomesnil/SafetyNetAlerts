@@ -12,6 +12,11 @@ public class UrlsService {
 
     static UrlsDAO urlsDAO = new UrlsDAO();
 
+
+    public PersonsListByStationNumberDTO getPersonsListsFromStationNumber(String station) {
+        return urlsDAO.getPersonsListsFromStationNumber(station);
+    }
+
     public static PhoneAlertDTO getPhoneNumberListByFirestationNumber(String station) {
         return urlsDAO.getPhoneNumberListByFirestationNumber(station);
     }
@@ -30,5 +35,9 @@ public class UrlsService {
 
     public List<PersonInfoDTO> getPersonInfoList(String firstName, String lastName) {
         return urlsDAO.getPersonInfoList(firstName,lastName);
+    }
+
+    public EmailAlertDTO getCommunityEmailList(String city) {
+        return urlsDAO.getCommunityEmailList(city);
     }
 }

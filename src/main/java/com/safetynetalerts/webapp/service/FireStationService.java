@@ -26,12 +26,5 @@ public class FireStationService {
     public boolean updateFireStation(String address, String station) {
         return fireStationDAO.updateFireStation(address, station);
     }
-/*
-    public Iterable<FireStationByStationNumber> getPersonsListFromStationNumber(String station) {
-        return fireStationDAO.findByStationNumber(station);
-    }
-*/
-    public PersonsListByStationNumberDTO getPersonsListsFromStationNumber(String station) {
-        return fireStationDAO.getPersonsListsFromStationNumber(station);
-    }
+
 }

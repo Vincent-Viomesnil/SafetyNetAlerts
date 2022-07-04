@@ -11,8 +11,6 @@ public class PersonsListByStationNumberDTO {
     private List<PersonByStationNumberDTO> personByStationNumberDTO = new ArrayList<PersonByStationNumberDTO>();
     private int mineur;
     private int majeur;
-   // private MedicalRecord medicalRecord = new MedicalRecord();
-  //  private AgeCalculatorService ageCalculatorService = new AgeCalculatorService();
 
     public List<PersonByStationNumberDTO> getPersonsByStationNumbers() {
         return personByStationNumberDTO;

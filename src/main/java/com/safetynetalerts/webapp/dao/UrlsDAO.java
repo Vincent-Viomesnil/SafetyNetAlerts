@@ -10,6 +10,47 @@ import java.util.List;
 
 public class UrlsDAO implements UrlsRepository {
 
+
+    @Override
+    public PersonsListByStationNumberDTO getPersonsListsFromStationNumber(String station) {
+        List<FireStation> firestations = new ArrayList<FireStation>();
+        PersonsListByStationNumberDTO personList = new PersonsListByStationNumberDTO();
+        FireStationDAO fireStationDAO = new FireStationDAO();
+
+        firestations = fireStationDAO.getFirestationsByStationNumber(station);
+        //méthode qui retourne l'ensemble des firestation avec comme paramètre le numéro de station
+
+        for (FireStation firestation : firestations) {
+            for (Person person : Data.getPersons()) {
+                if (firestation.getAddress().equals(person.getAddress())) {
+                    PersonByStationNumberDTO personByStationNumberDTO = new PersonByStationNumberDTO();
+
+                    personByStationNumberDTO.setFirstName(person.getFirstName());
+                    personByStationNumberDTO.setLastName(person.getLastName());
+                    personByStationNumberDTO.setPhone(person.getPhone());
+                    personByStationNumberDTO.setAddress(person.getAddress());
+
+                    personList.getPersonsByStationNumbers().add(personByStationNumberDTO);
+
+                    for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
+
+                        if (medicalRecord.getFirstName().equals(personByStationNumberDTO.getFirstName())) {
+                            if (medicalRecord.getAge() > 18) {
+                                personList.setMajeur(personList.getMajeur()+1);
+                            } else {
+                                personList.setMineur(personList.getMineur()+1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        return personList;
+
+    }
+
     @Override
     public List<ChildAlertDTO> getChildListByAddress(String address) {
 
@@ -60,8 +101,8 @@ public class UrlsDAO implements UrlsRepository {
                     phoneAlertList.getPhoneAlertList().add(person.getPhone());
                 }
             }
-            }
-            return phoneAlertList;
+        }
+        return phoneAlertList;
 
     }
 
@@ -74,24 +115,22 @@ public class UrlsDAO implements UrlsRepository {
         PersonDAO personDAO = new PersonDAO();
 
         fireStations = fireStationDAO.getFirestationsByAddress(address);
-        String firestationNumber = fireStationDAO.getFirestationByAddress(address);
+        String firestationNumber = fireStationDAO.getAFirestationByAddress(address);
         fireAddressList.setFireStation(firestationNumber);
 
         for (FireStation fireStation : fireStations) {
             List<Person> personList2 = personDAO.getPersonsListByAddress(fireStation.getAddress());
             personList.addAll(personList2);
-                 }
+        }
         MedicalRecordDAO medicalRecordDAO = new MedicalRecordDAO();
 
         for (Person person : personList) {
-             MedicalRecord medicalRecord = medicalRecordDAO.getByFirstName(person.getFirstName());
-            fireAddressList.getFireAddressList().add(new FireAddressDTO(person.getFirstName(),person.getLastName(), medicalRecord.getAge(),medicalRecord.getMedications(),medicalRecord.getAllergies()));
+            MedicalRecord medicalRecord = medicalRecordDAO.getByFirstName(person.getFirstName());
+            fireAddressList.getFireAddressList().add(new FireAddressDTO(person.getFirstName(), person.getLastName(), medicalRecord.getAge(), medicalRecord.getMedications(), medicalRecord.getAllergies()));
         }
 
-      return fireAddressList;
+        return fireAddressList;
     }
-
-
 
 
     public List<HomeByStationNumberDTO> getHomeByStationNumber(String station) {
@@ -103,7 +142,7 @@ public class UrlsDAO implements UrlsRepository {
 
         firestations = fireStationDAO.getFirestationsByStationNumber(station);
 
-        for (FireStation fireStation : firestations){
+        for (FireStation fireStation : firestations) {
             List<Person> personList2 = personDAO.getPersonsListByAddress(fireStation.getAddress());
             personList.addAll(personList2);
         }
@@ -113,7 +152,7 @@ public class UrlsDAO implements UrlsRepository {
             MedicalRecord medicalRecord = medicalRecordDAO.getByFirstName(person.getFirstName());
             medicalRecordList.add(medicalRecord);
 
-            homeByStationNumberList.add(new HomeByStationNumberDTO(person.getLastName(),person.getPhone(), medicalRecord.getAge(), medicalRecord.getMedications(), medicalRecord.getAllergies()));
+            homeByStationNumberList.add(new HomeByStationNumberDTO(person.getLastName(), person.getPhone(), medicalRecord.getAge(), medicalRecord.getMedications(), medicalRecord.getAllergies()));
         }
         return homeByStationNumberList;
     }
@@ -124,13 +163,26 @@ public class UrlsDAO implements UrlsRepository {
         PersonDAO personDAO = new PersonDAO();
         MedicalRecordDAO medicalRecordDAO = new MedicalRecordDAO();
 
-        personList = personDAO.getPersonByFirstNameAndLastName(firstName,lastName);
+        personList = personDAO.getPersonByFirstNameAndLastName(firstName, lastName);
 
-        for (Person person : personList){
+        for (Person person : personList) {
             MedicalRecord medicalRecord = medicalRecordDAO.getByFirstName(person.getFirstName());
-            personInfoList.add(new PersonInfoDTO(person.getFirstName(),person.getLastName(),person.getAddress(),medicalRecord.getAge(),person.getEmail(),medicalRecord.getMedications(), medicalRecord.getAllergies()));
+            personInfoList.add(new PersonInfoDTO(person.getFirstName(), person.getLastName(), person.getAddress(), medicalRecord.getAge(), person.getEmail(), medicalRecord.getMedications(), medicalRecord.getAllergies()));
         }
         return personInfoList;
     }
+
+    public EmailAlertDTO getCommunityEmailList(String city) {
+        EmailAlertDTO emailAlertList = new EmailAlertDTO();
+
+        for (Person person : Data.getPersons()) {
+            if (person.getCity().equals(city)) {
+                emailAlertList.getEmailAlertList().add(person.getEmail());
+            }
+
+        }
+        return emailAlertList;
+    }
 }
+
 

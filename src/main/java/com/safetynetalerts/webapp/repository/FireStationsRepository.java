@@ -15,7 +15,6 @@ public interface FireStationsRepository {
 
     boolean updateFireStation(String address, String station);
 
-    // Iterable<Person> findByStationNumber(String station);
 
-    PersonsListByStationNumberDTO getPersonsListsFromStationNumber(String station);
+
 }
