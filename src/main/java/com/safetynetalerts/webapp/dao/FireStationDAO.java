@@ -2,9 +2,10 @@ package com.safetynetalerts.webapp.dao;
 
 import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.FireStation;
-import com.safetynetalerts.webapp.model.FireStationByStationNumber;
-import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.repository.FireStationsRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FireStationDAO implements FireStationsRepository {
 
@@ -16,11 +17,11 @@ public class FireStationDAO implements FireStationsRepository {
 
     @Override
     public boolean saveFireStation(FireStation fireStation) {
-      return  Data.getFireStations().add(fireStation);
+        return Data.getFireStations().add(fireStation);
     }
 
     @Override
-    public boolean deleteFireStation(String address){
+    public boolean deleteFireStation(String address) {
         return Data.getFireStations().removeIf(fireStation -> fireStation.getAddress().equals(address));
     }
 
@@ -35,38 +36,40 @@ public class FireStationDAO implements FireStationsRepository {
         return false;
     }
 
-    @Override
-    public Iterable<FireStationByStationNumber> findByStationNumber(String station) {
-        for (FireStation currentFireStation : Data.getFireStations()) {
-            if (currentFireStation.getStation().equals(station)) {
-                FireStationByStationNumber fireStationByStationNumber = new FireStationByStationNumber();
-                Person person = new Person();
 
-                if (fireStationByStationNumber.getAddress() == person.getAddress()) {
+    public List<FireStation> getFirestationsByStationNumber(String stationNumber){
+        List<FireStation> fireStationList = new ArrayList<>();
 
-                    fireStationByStationNumber.getFirstName();
-                    fireStationByStationNumber.getLastName();
-                    fireStationByStationNumber.getPhone();
-                    return Data.getFireStationByStationNumbers();
-                }
+        for (FireStation fireStation : Data.getFireStations()) {
+
+            if (fireStation.getStation().equals(stationNumber)) {
+                fireStationList.add(fireStation);
             }
         }
-        return null;
+
+        return fireStationList;
     }
 
-    public Iterable<Person> getPersonsListsFromStationNumber(String station) {
-        Person person = new Person();
+    public List<FireStation> getFirestationsByAddress(String address){
+        List<FireStation> fireStationList = new ArrayList<>();
 
-        for (FireStation currentFireStation : Data.getFireStations()) {
-            if (currentFireStation.getStation().equals(station)) {
-                currentFireStation.getStation();
-                person.getFirstName();
-                person.getLastName();
-                person.getAddress();
-                person.getPhone();
-              }
+        for (FireStation fireStation : Data.getFireStations()) {
 
+            if (fireStation.getAddress().equals(address)) {
+                fireStationList.add(fireStation);
             }
+        }
+
+        return fireStationList;
+    }
+    public String getAFirestationByAddress(String address){
+        for (FireStation fireStation : Data.getFireStations()) {
+            if (fireStation.getAddress().equals(address)) {
+               return fireStation.getStation();
+            }
+        }
+
         return null;
     }
-}
+
+    }

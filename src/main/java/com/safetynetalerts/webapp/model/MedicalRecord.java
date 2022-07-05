@@ -1,6 +1,7 @@
 package com.safetynetalerts.webapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.safetynetalerts.webapp.data.Data;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,6 +20,8 @@ public class MedicalRecord {
     private List<String> medications;
     private List<String> allergies;
     private Integer age;
+
+
 
     public MedicalRecord() {
     }
@@ -78,6 +81,8 @@ public class MedicalRecord {
         age = Period.between(LocalDate.parse(this.birthdate, formatter), LocalDate.now()).getYears();
         return age;
     }
+
+
     public void setAge(Integer age) {
         this.age = age;
     }
@@ -85,6 +90,6 @@ public class MedicalRecord {
 
     @Override
     public String toString() {
-        return "MedicalRecord [firstName: " + getFirstName() + ", lastName: " + getLastName() + ", birthdate: " + getBirthdate() + ", age :" +getAge() + ", medications: " + getMedications() + ", allergies:" + getAllergies() +"] \n";
+        return "MedicalRecord [firstName: " + getFirstName() + ", lastName: " + getLastName() + ", birthdate: " + getBirthdate() + " , medications: " + getMedications() + ", allergies:" + getAllergies() +"] \n";
     }
 }
