@@ -115,6 +115,7 @@ public class UrlsDAO implements UrlsRepository {
         PersonDAO personDAO = new PersonDAO();
 
         fireStations = fireStationDAO.getFirestationsByAddress(address);
+
         String firestationNumber = fireStationDAO.getAFirestationByAddress(address);
         fireAddressList.setFireStation(firestationNumber);
 

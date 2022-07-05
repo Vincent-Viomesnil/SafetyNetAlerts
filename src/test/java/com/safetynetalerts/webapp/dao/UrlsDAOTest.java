@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.times;
@@ -46,7 +47,7 @@ public class UrlsDAOTest {
 
         phoneAlertList.getPhoneAlertList().add(person.getPhone());
 
-        assertEquals(phoneAlertList.getPhoneAlertList().toString(), "[841-874-6512]");
+        assertThat(phoneAlertList.getPhoneAlertList().contains("841-874-6512"));
     }
 
     @Test
