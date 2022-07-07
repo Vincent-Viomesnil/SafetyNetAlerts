@@ -2,6 +2,7 @@ package com.safetynetalerts.webapp.data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.safetynetalerts.webapp.dto.FireAddressDTO;
+import org.springframework.context.annotation.Bean;
 
 
 import java.io.File;

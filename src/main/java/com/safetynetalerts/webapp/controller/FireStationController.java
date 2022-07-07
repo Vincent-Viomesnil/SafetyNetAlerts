@@ -3,6 +3,7 @@ package com.safetynetalerts.webapp.controller;
 
 import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.service.FireStationService;
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,10 @@ public class FireStationController {
 
 
     @GetMapping("/firestation")
-    public Iterable<FireStation> getFireStations() {return fireStationService.getFireStations();
+    public Iterable<FireStation> getFireStations() {
+        log.info("Find all Firestation request SUCCESS");
+        return fireStationService.getFireStations();
+
     }
 
     @PostMapping("/firestation")
@@ -33,11 +37,18 @@ public class FireStationController {
 
     @DeleteMapping("/firestation")
     public boolean deleteFireStation(@RequestParam String address) {
-        return fireStationService.deleteFireStation(address);
+        Boolean deleteFireStation = fireStationService.deleteFireStation(address);
+        if (deleteFireStation == true) {
+            log.info("Post Firestation request SUCCESS");
+        } else {
+            log.error("Post Firestation request FAILED, the address doesn't exists");
+        }
+        return deleteFireStation;
     }
 
     @PutMapping("/firestation")
     public boolean updateFireStation(@RequestParam String address, @RequestParam String station) {
+        log.info("Update Firestation request SUCCESS");
         return fireStationService.updateFireStation(address,station);
     }
 }

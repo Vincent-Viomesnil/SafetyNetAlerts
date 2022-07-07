@@ -23,6 +23,8 @@ public class FireStationDAO implements FireStationsRepository {
     @Override
     public boolean deleteFireStation(String address) {
         return Data.getFireStations().removeIf(fireStation -> fireStation.getAddress().equals(address));
+
+
     }
 
     @Override
