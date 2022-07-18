@@ -3,7 +3,6 @@ package com.safetynetalerts.webapp.controller;
 
 import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.service.FireStationService;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,7 @@ public class FireStationController {
     private FireStationService fireStationService;
 
 
-    @GetMapping("/firestation")
+    @GetMapping("/firestations")
     public List<FireStation> getFireStations() {
         List<FireStation> fireStationList = fireStationService.getFireStations();
         if (fireStationList.isEmpty()) {

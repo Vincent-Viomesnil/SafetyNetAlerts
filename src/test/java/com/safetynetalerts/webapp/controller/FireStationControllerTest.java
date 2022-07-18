@@ -36,7 +36,7 @@ public class FireStationControllerTest {
 
     @Test
     public void getFireStationTest() throws Exception {
-        mockMvc.perform(get("/firestation"))
+        mockMvc.perform(get("/firestations"))
                 .andExpect(status().isOk());
     }
 

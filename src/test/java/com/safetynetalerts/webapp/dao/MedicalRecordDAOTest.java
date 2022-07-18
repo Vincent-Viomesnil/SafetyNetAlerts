@@ -5,6 +5,7 @@ import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.model.MedicalRecord;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,8 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @AutoConfigureMockMvc
 public class MedicalRecordDAOTest {
 
+    @InjectMocks
     private MedicalRecordDAO medicalRecordDAO;
 
     @Test
@@ -92,6 +93,17 @@ public class MedicalRecordDAOTest {
         //THEN
         assertTrue(medicalRecordDAO.updateMedicalRecord("Firstname", "Lastname","10/10/1990", medications2, allergies2));
     }
+
+    @Test
+    public void getByFirstNameTest(){
+        List<String> medications = List.of("doliprane:1000mg");
+        List<String> allergies = List.of("lactose");
+        MedicalRecord medicalRecord = new MedicalRecord("Firstname", "Lastname", "01/01/2000", medications, allergies);
+        Data.getMedicalRecords().add(medicalRecord);
+
+        assertSame(medicalRecordDAO.getByFirstName("Firstname"), medicalRecord);
+    }
+
 
     }
 

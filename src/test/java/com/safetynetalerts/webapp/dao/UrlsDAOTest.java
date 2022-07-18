@@ -49,34 +49,6 @@ public class UrlsDAOTest {
 
         assertThat(phoneAlertList.getPhoneAlertList().contains("841-874-6512"));
     }
-
-    @Test
-    public void getPersonsListByAddress(){
-//        urlsDAO = new UrlsDAO();
-//
-//        List<FireStation> fireStations = new ArrayList<>();
-//        FireAddressListDTO fireAddressList = new FireAddressListDTO();
-//        FireStationDAO fireStationDAO = new FireStationDAO();
-//        Person person = new Person();
-//        FireStation fireStation = new FireStation();
-//        FireAddressDTO fireAddressDTO = new FireAddressDTO();
-//        MedicalRecord medicalRecord = new MedicalRecord();
-//
-//        fireStation.setAddress("1509 Culver St");
-//        person.setAddress("1509 Culver St");
-//
-//        fireAddressDTO.setStationAddress("1509 Culver St");
-//        fireAddressDTO.setStationNumber("3");
-//        fireAddressDTO.setFirstName("John");
-//        fireAddressDTO.setLastName("Boyd");
-//        //medicalRecordDAO.getAgeByPerson(person.getFirstName(), person.getLastName());
-//        fireAddressDTO.setAge(40);
-//        fireAddressDTO.setMedications(["aznol:350mg", "hydrapermazol:100mg"]);
-//        fireAddressDTO.setAllergies(["nillacilan"]);
-//
-//        fireAddressList.getFireAddressList().add(fireAddressDTO);
-//
-//        assertEquals(fireAddressList.getFireAddressList().size(), 1);
     }
 
-}
+

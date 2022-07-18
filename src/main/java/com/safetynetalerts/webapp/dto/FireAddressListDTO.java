@@ -1,10 +1,12 @@
 package com.safetynetalerts.webapp.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.safetynetalerts.webapp.model.FireStation;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FireAddressListDTO {
 
     private String fireStation;

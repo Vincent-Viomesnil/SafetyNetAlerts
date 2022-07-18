@@ -1,9 +1,11 @@
 package com.safetynetalerts.webapp.dao;
 
 import com.safetynetalerts.webapp.data.Data;
+import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.model.Person;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @AutoConfigureMockMvc
 public class PersonDAOTest {
 
+    @InjectMocks
     private PersonDAO personDAO;
 
     @Test
@@ -116,6 +119,37 @@ public class PersonDAOTest {
         //THEN
         assertTrue(personDAO.updatePerson("firstname", "lastname", "add", "city123", "zip", "phone", "email"));
     }
+
+    @Test
+    public void getPersonsListByAddressTest(){
+        Person person = new Person();
+        person.setFirstName("firstname");
+        person.setLastName("lastname");
+        person.setAddress("address");
+        person.setCity("city");
+        person.setZip("12345");
+        person.setPhone("06123456789");
+        person.setEmail("email@email.com");
+        Data.getPersons().add(person);
+
+        assertTrue(personDAO.getPersonsListByAddress("address").contains(person));
+    }
+
+    @Test
+    public void getPersonByFirstNameAndLastNameTest(){
+        Person person = new Person();
+        person.setFirstName("firstname");
+        person.setLastName("lastname");
+        person.setAddress("address");
+        person.setCity("city");
+        person.setZip("12345");
+        person.setPhone("06123456789");
+        person.setEmail("email@email.com");
+        Data.getPersons().add(person);
+
+        assertTrue(personDAO.getPersonByFirstNameAndLastName("firstname","lastname").contains(person));
+    }
+
 
     }
 
