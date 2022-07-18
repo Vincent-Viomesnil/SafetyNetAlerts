@@ -16,10 +16,9 @@ public class PersonDAO implements PersonsRepository {
     }
 
     @Override
-    public Iterable<Person> findAll() {
+    public List<Person> findAll() {
       return Data.getPersons();
     }
-
 
 
     @Override

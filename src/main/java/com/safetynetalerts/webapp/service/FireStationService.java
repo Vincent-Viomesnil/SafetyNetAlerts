@@ -5,13 +5,15 @@ import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.dto.PersonsListByStationNumberDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FireStationService {
 
     FireStationDAO fireStationDAO = new FireStationDAO();
 
 
-    public Iterable<FireStation> getFireStations() {
+    public List<FireStation> getFireStations() {
         return fireStationDAO.findAll();
     }
 

@@ -11,12 +11,13 @@ public class FireStationDAO implements FireStationsRepository {
 
 
     @Override
-    public Iterable<FireStation> findAll() {
+    public List<FireStation> findAll() {
         return Data.getFireStations();
     }
 
     @Override
     public boolean saveFireStation(FireStation fireStation) {
+
         return Data.getFireStations().add(fireStation);
     }
 

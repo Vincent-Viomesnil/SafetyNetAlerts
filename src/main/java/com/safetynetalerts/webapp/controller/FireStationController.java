@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @Slf4j
@@ -18,38 +20,43 @@ public class FireStationController {
 
 
     @GetMapping("/firestation")
-    public Iterable<FireStation> getFireStations() {
-        log.info("Find all Firestation request SUCCESS");
-        return fireStationService.getFireStations();
-
+    public List<FireStation> getFireStations() {
+        List<FireStation> fireStationList = fireStationService.getFireStations();
+        if (fireStationList.isEmpty()) {
+            log.error("Find all firestations request FAILED");
+        } else {
+            log.info("Find all firestations request SUCCESS");
+        }
+        return fireStationList ;
     }
 
     @PostMapping("/firestation")
     public boolean addFireStation(@RequestParam String address, @RequestParam String station) {
         FireStation fireStation = new FireStation(address, station);
-        if (fireStation != null) {
-            log.info("Post Firestation request SUCCESS");
-        } else {
-            log.error("Post Firestation request FAILED");
-        }
+        log.info("Post firestation request SUCCESS");
         return fireStationService.addFireStation(fireStation);
     }
 
     @DeleteMapping("/firestation")
     public boolean deleteFireStation(@RequestParam String address) {
-        Boolean deleteFireStation = fireStationService.deleteFireStation(address);
-        if (deleteFireStation == true) {
-            log.info("Post Firestation request SUCCESS");
+        boolean deleteFireStation = fireStationService.deleteFireStation(address);
+        if (deleteFireStation) {
+            log.info("Delete firestation request SUCCESS");
         } else {
-            log.error("Post Firestation request FAILED, the address doesn't exists");
+            log.error("Delete firestation request FAILED, the address doesn't exist");
         }
         return deleteFireStation;
     }
 
     @PutMapping("/firestation")
     public boolean updateFireStation(@RequestParam String address, @RequestParam String station) {
-        log.info("Update Firestation request SUCCESS");
-        return fireStationService.updateFireStation(address,station);
+        boolean updateFireStation = fireStationService.updateFireStation(address,station);
+        if (updateFireStation) {
+            log.info("Update firestation request SUCCESS");
+        } else {
+            log.error("Update firestation request FAILED, the address doesn't exist");
+        }
+        return updateFireStation;
     }
 }
 

@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface MedicalRecordsRepository {
 
-     Iterable<MedicalRecord> findAll();
+    List<MedicalRecord> findAll();
 
     boolean saveMedicalRecord(MedicalRecord medicalRecord);
 
