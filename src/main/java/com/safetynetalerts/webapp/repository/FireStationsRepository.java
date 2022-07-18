@@ -4,10 +4,12 @@ import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.dto.PersonsListByStationNumberDTO;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface FireStationsRepository {
 
-    Iterable<FireStation> findAll();
+    List<FireStation> findAll();
 
     boolean saveFireStation(FireStation fireStation);
 

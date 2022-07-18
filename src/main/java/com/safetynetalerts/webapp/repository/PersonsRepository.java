@@ -3,13 +3,13 @@ package com.safetynetalerts.webapp.repository;
 import com.safetynetalerts.webapp.model.Person;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 public interface PersonsRepository  {
 
-    Iterable<Person> findAll();
-
-   // Iterable<PersonsByStationNumber> getPersonsByFirstname(String lastName);
+    List<Person> findAll();
 
     boolean savePerson(Person person);
 

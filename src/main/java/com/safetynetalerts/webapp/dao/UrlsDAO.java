@@ -59,7 +59,6 @@ public class UrlsDAO implements UrlsRepository {
         PersonDAO personDAO = new PersonDAO();
 
         persons = personDAO.getPersonsListByAddress(address);
-        //méthode qui retourne l'ensemble des personnes en fonction de l'address
 
         for (Person person : persons) {
             for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
@@ -70,14 +69,9 @@ public class UrlsDAO implements UrlsRepository {
                         childAlert.setFirstName(medicalRecord.getFirstName());
                         childAlert.setLastName(medicalRecord.getLastName());
                         childAlert.setAge(medicalRecord.getAge());
+                        childAlert.getHome().add(person);
 
                         childList.add(childAlert);
-
-                        for (Person person2 : persons) {
-                            if (person.getAddress().equals(person2.getAddress())) {
-                                childAlert.getHome().add(person2);
-                            }
-                        }
                     }
                 }
             }
@@ -180,7 +174,6 @@ public class UrlsDAO implements UrlsRepository {
             if (person.getCity().equals(city)) {
                 emailAlertList.getEmailAlertList().add(person.getEmail());
             }
-
         }
         return emailAlertList;
     }

@@ -13,8 +13,6 @@ public class WebappApplication {
 		SpringApplication.run(WebappApplication.class, args);
 		LaunchMapper launchMapper = new LaunchMapper();
 		launchMapper.launchMapper();
-
-
 	}
 }
 

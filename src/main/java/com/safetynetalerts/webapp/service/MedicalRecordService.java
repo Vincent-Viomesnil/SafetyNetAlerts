@@ -13,7 +13,7 @@ public class MedicalRecordService {
     MedicalRecordDAO medicalRecordDAO = new MedicalRecordDAO();
 
 
-    public Iterable<MedicalRecord> getMedicalRecords() {
+    public List<MedicalRecord> getMedicalRecords() {
         return medicalRecordDAO.findAll();
     }
 

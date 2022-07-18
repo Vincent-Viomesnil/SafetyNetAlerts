@@ -15,7 +15,7 @@ public class MedicalRecordDAO implements MedicalRecordsRepository {
 
 
     @Override
-    public Iterable<MedicalRecord> findAll() {
+    public List<MedicalRecord> findAll() {
         return Data.getMedicalRecords();
     }
 

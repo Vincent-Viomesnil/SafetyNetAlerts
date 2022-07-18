@@ -5,15 +5,17 @@ import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.repository.PersonsRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
-    @Service
+
+@Service
     public class PersonService {
 
 
         private PersonsRepository personsRepository;
         PersonDAO personDAO = new PersonDAO();
 
-        public Iterable<Person> getPersons() {
+        public List<Person> getPersons() {
             return personDAO.findAll();
         }
 

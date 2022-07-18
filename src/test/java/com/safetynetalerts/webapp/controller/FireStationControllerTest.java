@@ -62,7 +62,6 @@ public class FireStationControllerTest {
         when(fireStationService.deleteFireStation("address")).thenReturn(true);
 
         mockMvc.perform(delete("/firestation?address=address&station=1")).andExpect(status().isOk());
-
     }
 
 
