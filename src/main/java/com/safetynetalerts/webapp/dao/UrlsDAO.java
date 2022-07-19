@@ -77,7 +77,6 @@ public class UrlsDAO implements UrlsRepository {
             }
         }
         return childList;
-
     }
 
     public PhoneAlertDTO getPhoneNumberListByFirestationNumber(String station) {

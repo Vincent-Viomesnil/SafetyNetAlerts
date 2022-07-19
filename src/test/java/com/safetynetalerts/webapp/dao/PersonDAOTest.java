@@ -150,6 +150,13 @@ public class PersonDAOTest {
         assertTrue(personDAO.getPersonByFirstNameAndLastName("firstname","lastname").contains(person));
     }
 
+    @Test
+    public void findAllPersonsTest(){
+        Person person = new Person();
+        Data.getPersons().add(person);
+
+        assertTrue(personDAO.findAll().contains(person));
+    }
 
     }
 

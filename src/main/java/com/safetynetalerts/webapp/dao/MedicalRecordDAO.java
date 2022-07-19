@@ -42,16 +42,6 @@ public class MedicalRecordDAO implements MedicalRecordsRepository {
         return false;
     }
 
-    public List<MedicalRecord> getAgeByPerson(String firstName, String Lastname) {
-        List<MedicalRecord> medicalRecordList = new ArrayList<>();
-        for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
-            if (medicalRecord.getFirstName().equals(firstName) && medicalRecord.getLastName().equals(Lastname)) {
-                medicalRecord.getAge();
-                medicalRecordList.add(medicalRecord);
-            }
-        } return medicalRecordList;
-    }
-
 
     public MedicalRecord getByFirstName(String firstName) {
 
