@@ -17,4 +17,7 @@ public interface PersonsRepository  {
 
     boolean updatePerson(String firstName, String lastName, String address, String city, String zip, String phone, String email);
 
+    List<Person> getPersonsListByAddress(String address);
+
+    List<Person> getPersonByFirstNameAndLastName(String firstName, String lastName);
 }

@@ -9,10 +9,9 @@ import java.util.List;
 
 
 @Service
-    public class PersonService {
+public class PersonService {
 
 
-        private PersonsRepository personsRepository;
         PersonDAO personDAO = new PersonDAO();
 
         public List<Person> getPersons() {
@@ -30,10 +29,6 @@ import java.util.List;
         public boolean updatePerson(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
          return personDAO.updatePerson(firstName, lastName, address, city, zip, phone, email);
         }
-/*
-        public Iterable<PersonsByStationNumber> getPersonsByFirstname(String lastName) {
-            return personDAO.getPersonsByFirstname(lastName);
-        } */
     }
 
 

@@ -38,7 +38,7 @@ public class FireStationDAO implements FireStationsRepository {
         return false;
     }
 
-
+    @Override
     public List<FireStation> getFirestationsByStationNumber(String stationNumber) {
         List<FireStation> fireStationList = new ArrayList<>();
 
@@ -52,6 +52,7 @@ public class FireStationDAO implements FireStationsRepository {
         return fireStationList;
     }
 
+    @Override
     public List<FireStation> getFirestationsByAddress(String address) {
         List<FireStation> fireStationList = new ArrayList<>();
 
@@ -65,6 +66,7 @@ public class FireStationDAO implements FireStationsRepository {
         return fireStationList;
     }
 
+    @Override
     public String getAFirestationByAddress(String address) {
         for (FireStation fireStation : Data.getFireStations()) {
             if (fireStation.getAddress().equals(address)) {

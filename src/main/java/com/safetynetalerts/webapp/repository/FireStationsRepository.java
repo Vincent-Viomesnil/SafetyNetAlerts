@@ -18,5 +18,9 @@ public interface FireStationsRepository {
     boolean updateFireStation(String address, String station);
 
 
+    List<FireStation> getFirestationsByStationNumber(String stationNumber);
 
+    List<FireStation> getFirestationsByAddress(String address);
+
+    String getAFirestationByAddress(String address);
 }

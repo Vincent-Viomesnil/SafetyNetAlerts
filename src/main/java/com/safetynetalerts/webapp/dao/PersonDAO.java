@@ -42,6 +42,7 @@ public class PersonDAO implements PersonsRepository {
                 return false;
             }
 
+    @Override
     public List<Person> getPersonsListByAddress(String address){
         List<Person> personsListByAddress = new ArrayList<>();
         for (Person person : Data.getPersons()) {
@@ -52,6 +53,7 @@ public class PersonDAO implements PersonsRepository {
         return personsListByAddress;
     }
 
+    @Override
     public List<Person> getPersonByFirstNameAndLastName(String firstName, String lastName) {
         List<Person> personList = new ArrayList<Person>();
         for (Person person : Data.getPersons()) {

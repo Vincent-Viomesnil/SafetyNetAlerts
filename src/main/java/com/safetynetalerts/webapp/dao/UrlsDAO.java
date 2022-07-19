@@ -81,7 +81,6 @@ public class UrlsDAO implements UrlsRepository {
 
     public PhoneAlertDTO getPhoneNumberListByFirestationNumber(String station) {
         List<FireStation> firestations = new ArrayList<FireStation>();
-        PersonsListByStationNumberDTO personList = new PersonsListByStationNumberDTO();
         PhoneAlertDTO phoneAlertList = new PhoneAlertDTO();
         FireStationDAO fireStationDAO = new FireStationDAO();
 
@@ -126,7 +125,7 @@ public class UrlsDAO implements UrlsRepository {
         return fireAddressList;
     }
 
-
+    @Override
     public List<HomeByStationNumberDTO> getHomeByStationNumber(String station) {
         List<HomeByStationNumberDTO> homeByStationNumberList = new ArrayList<>();
         List<Person> personList = new ArrayList<>();
@@ -151,6 +150,7 @@ public class UrlsDAO implements UrlsRepository {
         return homeByStationNumberList;
     }
 
+    @Override
     public List<PersonInfoDTO> getPersonInfoList(String firstName, String lastName) {
         List<PersonInfoDTO> personInfoList = new ArrayList<>();
         List<Person> personList = new ArrayList<>();
@@ -166,6 +166,7 @@ public class UrlsDAO implements UrlsRepository {
         return personInfoList;
     }
 
+    @Override
     public EmailAlertDTO getCommunityEmailList(String city) {
         EmailAlertDTO emailAlertList = new EmailAlertDTO();
 

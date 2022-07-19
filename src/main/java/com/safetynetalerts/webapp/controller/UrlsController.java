@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
-@RestController
 @Slf4j
+@RestController
 public class UrlsController {
 
     @Autowired
@@ -45,7 +44,7 @@ public class UrlsController {
 
     @GetMapping(value = "/phoneAlert")
     public PhoneAlertDTO getPhoneNumberByFirestationNumber(@RequestParam(value = "station") String station) {
-        PhoneAlertDTO phoneAlertDTO = urlsService.getPhoneNumberListByFirestationNumber(station);
+        PhoneAlertDTO phoneAlertDTO =urlsService.getPhoneNumberListByFirestationNumber(station);
         if (phoneAlertDTO.getPhoneAlertList().isEmpty()){
             log.error("Find all phone number by firestation number request FAILED, station number not found");
         } else {

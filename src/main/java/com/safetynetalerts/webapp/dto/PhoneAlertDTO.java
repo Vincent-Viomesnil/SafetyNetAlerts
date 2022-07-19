@@ -17,4 +17,11 @@ public class PhoneAlertDTO {
     public void setPhoneAlertList(List<String> phoneAlertList) {
         this.phoneAlertList = phoneAlertList;
     }
+
+    @Override
+    public String toString() {
+        return "PhoneAlertDTO{" +
+                "phoneAlertList=" + phoneAlertList +
+                '}';
+    }
 }

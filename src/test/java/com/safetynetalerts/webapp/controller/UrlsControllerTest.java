@@ -1,9 +1,11 @@
 package com.safetynetalerts.webapp.controller;
 
+import com.safetynetalerts.webapp.dto.EmailAlertDTO;
 import com.safetynetalerts.webapp.service.UrlsService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -20,9 +22,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class UrlsControllerTest {
 
-
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private UrlsService urlsService;
 
     @Test
     public void getPersonsListsFromStationNumberTest() throws Exception {
