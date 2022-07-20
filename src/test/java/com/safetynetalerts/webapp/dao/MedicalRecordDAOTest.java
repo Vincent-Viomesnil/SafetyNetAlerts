@@ -33,12 +33,12 @@ public class MedicalRecordDAOTest {
     @Test
     public void findAllMedicalRecordsTest(){
         medicalRecordDAO = new MedicalRecordDAO();
-        List<String> medications1 = List.of("doli:1000mg");
-        List<String> allergies1 = List.of("lacto");
-        MedicalRecord medicalRecord1 = new MedicalRecord("FirstnameE", "LastnameG", "01/01/2010", medications1, allergies1);
-        Data.getMedicalRecords().add(medicalRecord1);
+        List<String> medications = List.of("doli:1000mg");
+        List<String> allergies = List.of("lacto");
+        MedicalRecord medicalRecord = new MedicalRecord("Firstname", "Lastname", "01/01/2010", medications, allergies);
+        Data.getMedicalRecords().add(medicalRecord);
 
-        assertTrue(medicalRecordDAO.findAll().contains(medicalRecord1));
+        assertTrue(medicalRecordDAO.findAll().contains(medicalRecord));
     }
 
     @Test
@@ -120,10 +120,10 @@ public class MedicalRecordDAOTest {
         medicalRecordDAO = new MedicalRecordDAO();
         List<String> medications = List.of("doliprane:1000mg");
         List<String> allergies = List.of("lactose");
-        MedicalRecord medicalRecord = new MedicalRecord("Vincent", "Vio", "01/01/2000", medications, allergies);
+        MedicalRecord medicalRecord = new MedicalRecord("Firstname", "Lastname", "01/01/2000", medications, allergies);
         Data.getMedicalRecords().add(medicalRecord);
 
-        assertNotNull(medicalRecordDAO.getByFirstName("Vincent"));
+        assertNotNull(medicalRecordDAO.getByFirstName("Firstname"));
     }
 
     }

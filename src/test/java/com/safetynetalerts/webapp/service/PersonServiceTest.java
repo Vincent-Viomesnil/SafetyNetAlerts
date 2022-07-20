@@ -7,34 +7,34 @@ import com.safetynetalerts.webapp.model.Person;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
+
 @ExtendWith(MockitoExtension.class)
-@AutoConfigureMockMvc
 public class PersonServiceTest {
 
-
-    @MockBean
     private PersonDAO personDAO;
 
     @InjectMocks
     private PersonService personService;
 
-    private static Person person;
+    private Person person;
 
     @Test
     public void getPersonsTest() {
 
         //GIVEN
         person = new Person();
+        personDAO = new PersonDAO();
 
         person.setFirstName("firstname");
         person.setLastName("lastname");
@@ -44,28 +44,35 @@ public class PersonServiceTest {
         person.setPhone("06123456789");
         person.setEmail("email@email.com");
 
-        when(personDAO.findAll()).thenReturn(Data.getPersons());
+        personDAO.findAll();
 
         assertThat(personService.getPersons()).isNotNull();
-
     }
 
     @Test
     public void addPersonTest() {
+        person = new Person();
+        personDAO = new PersonDAO();
 
-        person = new Person("first", "last", "add", "city", "zip", "phone", "email");
-        personService.addPerson(person);
+        person.setFirstName("firstname0");
+        person.setLastName("lastname0");
+        person.setAddress("address0");
+        person.setCity("city0");
+        person.setZip("123450");
+        person.setPhone("061234567890");
+        person.setEmail("email@email.com0");
 
-        when(personDAO.savePerson(any(Person.class))).thenReturn(true);
+        Data.getPersons().add(person);
 
-        assertThat(personService.addPerson(person)).isTrue();
-        assertThat(person.getFirstName()).isEqualTo("first");
+
+        assertTrue(personService.addPerson(person));
+        assertThat(person.getFirstName()).isEqualTo("firstname0");
     }
 
 
     @Test
     public void updatePersonTest() {
-
+        personDAO = new PersonDAO();
         person = new Person();
         person.setFirstName("firstname");
         person.setLastName("lastname");
@@ -75,17 +82,15 @@ public class PersonServiceTest {
         person.setPhone("06123456789");
         person.setEmail("email@email.com");
 
-        personService.addPerson(person);
+        Data.getPersons().add(person);
 
-        when(personDAO.updatePerson("firstname","lastname", "add123", "city123",  "zip123", "phone123","email123")).thenReturn(true);
-
-        assertThat(personService.updatePerson("firstname","lastname", "add123", "city123",  "zip123", "phone123","email123")).isTrue();
+        assertTrue(personService.updatePerson("firstname","lastname", "add123", "city123",  "zip123", "phone123","email123"));
 
     }
 
     @Test
     public void deletePersonTest() {
-
+        personDAO = new PersonDAO();
         person = new Person();
         person.setFirstName("firstname");
         person.setLastName("lastname");
@@ -95,11 +100,9 @@ public class PersonServiceTest {
         person.setPhone("06123456789");
         person.setEmail("email@email.com");
 
-        personService.addPerson(person);
+        Data.getPersons().add(person);
 
-        when(personDAO.deletePerson("firstname", "lastname")).thenReturn(true);
-
-        assertThat(personService.deletePerson("firstname", "lastname")).isTrue();
+        personDAO.deletePerson("firstname", "lastname");
 
         assertThat(personService.getPersons()).doesNotHaveToString("firstname");
 

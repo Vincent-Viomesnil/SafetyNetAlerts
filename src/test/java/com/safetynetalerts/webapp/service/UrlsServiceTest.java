@@ -20,26 +20,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
+
 @ExtendWith(MockitoExtension.class)
-@AutoConfigureMockMvc
 public class UrlsServiceTest {
 
-
-    @MockBean
     private UrlsDAO urlsDAO;
+
+    private PersonDAO personDAO;
 
     @InjectMocks
     private UrlsService urlsService;
-
 
     @Test
     public void getPersonsListsFromStationNumberTest() {
 
         //GIVEN
+        urlsDAO = new UrlsDAO();
         PersonsListByStationNumberDTO personList = new PersonsListByStationNumberDTO();
         Person person = new Person();
         person.setFirstName("firstname");
@@ -53,7 +53,7 @@ public class UrlsServiceTest {
         fireStation.setStation("2");
         fireStation.setAddress("address");
 
-        when(urlsDAO.getPersonsListsFromStationNumber("2")).thenReturn(personList);
+        urlsDAO.getPersonsListsFromStationNumber("2");
 
         assertThat(urlsService.getPersonsListsFromStationNumber("2")).isNotNull();
 
@@ -63,6 +63,7 @@ public class UrlsServiceTest {
     public void getPhoneNumberListByFirestationNumberTest() {
 
         //GIVEN
+        urlsDAO = new UrlsDAO();
         PhoneAlertDTO phoneAlertDTO = new PhoneAlertDTO();
         Person person = new Person();
         person.setFirstName("firstname");
@@ -76,7 +77,7 @@ public class UrlsServiceTest {
         fireStation.setStation("2");
         fireStation.setAddress("address");
 
-        when(urlsDAO.getPhoneNumberListByFirestationNumber("2")).thenReturn(phoneAlertDTO);
+        urlsDAO.getPhoneNumberListByFirestationNumber("2");
 
         assertThat(urlsService.getPhoneNumberListByFirestationNumber("2")).isNotNull();
     }
@@ -85,6 +86,7 @@ public class UrlsServiceTest {
     public void getChildListByAddressTest() {
 
         //GIVEN
+        urlsDAO = new UrlsDAO();
         List<ChildAlertDTO> childAlertDTO = new ArrayList<>();
         Person person = new Person();
         person.setFirstName("firstname");
@@ -99,7 +101,7 @@ public class UrlsServiceTest {
         List<String> allergies = List.of("lactose");
         MedicalRecord medicalRecord = new MedicalRecord("firstname", "lastname", "01/01/2010", medications, allergies);
 
-        when(urlsDAO.getChildListByAddress("address")).thenReturn(childAlertDTO);
+        urlsDAO.getChildListByAddress("address");
 
         assertThat(urlsService.getChildListByAddress("address")).isNotNull();
     }
@@ -109,6 +111,7 @@ public class UrlsServiceTest {
     public void getPersonsListByAddressTest() {
 
         //GIVEN
+        urlsDAO = new UrlsDAO();
         FireAddressListDTO fireAddressListDTO = new FireAddressListDTO();
         Person person = new Person();
         person.setFirstName("firstname");
@@ -122,7 +125,7 @@ public class UrlsServiceTest {
         fireStation.setStation("2");
         fireStation.setAddress("address");
 
-        when(urlsDAO.getPersonsListByAddress("address")).thenReturn(fireAddressListDTO);
+        urlsDAO.getPersonsListByAddress("address");
 
         assertThat(urlsService.getPersonsListByAddress("address")).isNotNull();
     }
@@ -132,6 +135,7 @@ public class UrlsServiceTest {
     public void getHomeByStationNumberTest() {
 
         //GIVEN
+        urlsDAO = new UrlsDAO();
         List<HomeByStationNumberDTO> homeByStationNumberList = new ArrayList<>();
         Person person = new Person();
         person.setFirstName("firstname");
@@ -145,7 +149,7 @@ public class UrlsServiceTest {
         fireStation.setStation("2");
         fireStation.setAddress("address");
 
-        when(urlsDAO.getHomeByStationNumber("2")).thenReturn(homeByStationNumberList);
+        urlsDAO.getHomeByStationNumber("2");
 
         assertThat(urlsService.getHomeByStationNumber("2")).isNotNull();
     }
@@ -155,6 +159,10 @@ public class UrlsServiceTest {
     public void getPersonInfoListTest() {
 
         //GIVEN
+        urlsDAO = new UrlsDAO();
+        personDAO = new PersonDAO();
+
+        PersonsListByStationNumberDTO personList = new PersonsListByStationNumberDTO();
         List<PersonInfoDTO> personInfoList = new ArrayList<>();
         Person person = new Person();
         person.setFirstName("firstname");
@@ -168,15 +176,16 @@ public class UrlsServiceTest {
         fireStation.setStation("2");
         fireStation.setAddress("address");
 
-        when(urlsDAO.getPersonInfoList("firstname", "lastname")).thenReturn(personInfoList);
+        personDAO.getPersonByFirstNameAndLastName("firstname", "lastname");
 
-        assertThat(urlsService.getPersonInfoList("firstname", "lastname")).isNotNull();
+        assertNotNull(urlsService.getPersonInfoList("firstname", "lastname"));
     }
 
     @Test
     public void getCommunityEmailListTest() {
 
         //GIVEN
+        urlsDAO = new UrlsDAO();
         EmailAlertDTO emailAlertDTO = new EmailAlertDTO();
         Person person = new Person();
         person.setFirstName("firstname");
@@ -190,7 +199,7 @@ public class UrlsServiceTest {
         fireStation.setStation("2");
         fireStation.setAddress("address");
 
-        when(urlsDAO.getCommunityEmailList("city")).thenReturn(emailAlertDTO);
+        urlsDAO.getCommunityEmailList("city");
 
         assertThat(urlsService.getCommunityEmailList("city")).isNotNull();
     }

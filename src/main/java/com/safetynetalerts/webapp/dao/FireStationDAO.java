@@ -3,10 +3,12 @@ package com.safetynetalerts.webapp.dao;
 import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.repository.FireStationsRepository;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class FireStationDAO implements FireStationsRepository {
 
 
@@ -43,7 +45,7 @@ public class FireStationDAO implements FireStationsRepository {
         List<FireStation> fireStationList = new ArrayList<>();
 
         for (FireStation fireStation : Data.getFireStations()) {
-
+        log.info("firestion:" + fireStation);
             if (fireStation.getStation().equals(stationNumber)) {
                 fireStationList.add(fireStation);
             }
@@ -73,6 +75,6 @@ public class FireStationDAO implements FireStationsRepository {
                 return fireStation.getStation();
             }
         }
-        return address;
+        return null;
     }
 }

@@ -20,16 +20,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 
-
-@SpringBootTest
 @ExtendWith(MockitoExtension.class)
-@AutoConfigureMockMvc
 public class FireStationDAOTest {
 
-    @Mock
-    private Data data;
-
-    @InjectMocks
     private FireStationDAO fireStationDAO;
 
     @Test
@@ -101,6 +94,7 @@ public class FireStationDAOTest {
 
     @Test
     public void findAllFirestationsTest(){
+        fireStationDAO = new FireStationDAO();
         FireStation fireStation = new FireStation();
         Data.getFireStations().add(fireStation);
 
@@ -109,6 +103,7 @@ public class FireStationDAOTest {
 
     @Test
     public void getFirestationsByStationNumberTest(){
+        fireStationDAO = new FireStationDAO();
         FireStation fireStation = new FireStation("1 Avenue de Paris", "1");
         FireStation fireStation2 = new FireStation("9 rue de la Tour Eiffel","1");
         Data.getFireStations().add(fireStation);
@@ -119,6 +114,7 @@ public class FireStationDAOTest {
 
     @Test
     public void getFirestationsByAddressTest(){
+        fireStationDAO = new FireStationDAO();
         FireStation fireStation = new FireStation("1 Avenue de Paris", "1");
         Data.getFireStations().add(fireStation);
 

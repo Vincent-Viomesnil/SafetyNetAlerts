@@ -4,10 +4,12 @@ import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.dto.*;
 import com.safetynetalerts.webapp.model.*;
 import com.safetynetalerts.webapp.repository.UrlsRepository;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class UrlsDAO implements UrlsRepository {
 
 

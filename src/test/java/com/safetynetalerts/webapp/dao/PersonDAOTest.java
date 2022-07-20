@@ -17,12 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-@SpringBootTest
+
 @ExtendWith(MockitoExtension.class)
-@AutoConfigureMockMvc
 public class PersonDAOTest {
 
-    @InjectMocks
     private PersonDAO personDAO;
 
     @Test
@@ -61,19 +59,18 @@ public class PersonDAOTest {
 
     @Test
     public void savePersonDAOTest()  {
-
         Person person = new Person();
         personDAO = new PersonDAO();
 
-    person.setFirstName("firstname");
-    person.setLastName("lastname");
-    person.setAddress("address");
-    person.setCity("city");
-    person.setZip("12345");
-    person.setPhone("06123456789");
-    person.setEmail("email@email.com");
+        person.setFirstName("firstname");
+        person.setLastName("lastname");
+        person.setAddress("address");
+        person.setCity("city");
+        person.setZip("12345");
+        person.setPhone("06123456789");
+        person.setEmail("email@email.com");
 
-    assertTrue(personDAO.savePerson(person));
+        assertTrue(personDAO.savePerson(person));
 
     }
 
@@ -122,6 +119,7 @@ public class PersonDAOTest {
 
     @Test
     public void getPersonsListByAddressTest(){
+        personDAO = new PersonDAO();
         Person person = new Person();
         person.setFirstName("firstname");
         person.setLastName("lastname");
@@ -137,6 +135,7 @@ public class PersonDAOTest {
 
     @Test
     public void getPersonByFirstNameAndLastNameTest(){
+        personDAO = new PersonDAO();
         Person person = new Person();
         person.setFirstName("firstname");
         person.setLastName("lastname");
@@ -152,6 +151,7 @@ public class PersonDAOTest {
 
     @Test
     public void findAllPersonsTest(){
+        personDAO = new PersonDAO();
         Person person = new Person();
         Data.getPersons().add(person);
 

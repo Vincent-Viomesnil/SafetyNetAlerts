@@ -3,10 +3,12 @@ package com.safetynetalerts.webapp.dao;
 import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.repository.PersonsRepository;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class PersonDAO implements PersonsRepository {
 
 
@@ -29,6 +31,7 @@ public class PersonDAO implements PersonsRepository {
     @Override
     public boolean updatePerson(String firstName, String lastName, String address, String city, String zip, String phone, String email) {
         for (Person currentPerson : Data.getPersons()) {
+            log.info("currentPerson:" + currentPerson);
             if (currentPerson.getFirstName().equals(firstName) && currentPerson.getLastName().equals(lastName)) {
                 currentPerson.setAddress(address);
                 currentPerson.setCity(city);
@@ -46,6 +49,7 @@ public class PersonDAO implements PersonsRepository {
     public List<Person> getPersonsListByAddress(String address){
         List<Person> personsListByAddress = new ArrayList<>();
         for (Person person : Data.getPersons()) {
+            log.info("person:" + person);
             if (person.getAddress().equals(address)) {
                 personsListByAddress.add(person);
             }
