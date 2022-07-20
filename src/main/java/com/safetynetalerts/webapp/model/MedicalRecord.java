@@ -22,7 +22,6 @@ public class MedicalRecord {
     private Integer age;
 
 
-
     public MedicalRecord() {
     }
 

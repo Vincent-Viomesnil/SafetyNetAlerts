@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+
 @ExtendWith(MockitoExtension.class)
 public class UrlsDAOTest {
 
@@ -41,110 +41,110 @@ public class UrlsDAOTest {
 
     @MockBean
     private MedicalRecordDAO medicalRecordDAO;
-//
-//    @Test
-//    public void getPersonsListByStationNumberTest() throws ParseException {
-//        urlsDAO = new UrlsDAO();
-//        FireStation fireStation = new FireStation();
-//        List<FireStation> fireStationList = new ArrayList<>();
-//        Person person = new Person();
-//        List<Person> personList = new ArrayList<>();
-//        fireStationDAO = new FireStationDAO();
-//        personDAO = new PersonDAO();
-//
-//        fireStation.setAddress("address");
-//        fireStation.setStation("3");
-//        person.setFirstName("firstname");
-//        person.setLastName("lastname");
-//        person.setAddress("address");
-//        person.setCity("city");
-//        person.setZip("12345");
-//        person.setPhone("06123456789");
-//        person.setEmail("email@email.com");
-//        fireStationList.add(fireStation);
-//        personList.add(person);
-//
-//        when(fireStationDAO.getFirestationsByStationNumber(anyString())).thenReturn(fireStationList);
-//        when(personDAO.getPersonsListByAddress(anyString())).thenReturn(personList);
-//
-//        assertNotNull(urlsDAO.getPhoneNumberListByFirestationNumber("3"));
-//    }
-//
-//    @Test
-//    public void getPhoneNumberListByFirestationNumberTest() {
-//        urlsDAO = new UrlsDAO();
-//        fireStationDAO = new FireStationDAO();
-//        personDAO = new PersonDAO();
-//        FireStation fireStation = new FireStation();
-//        List<FireStation> fireStationList = new ArrayList<>();
-//        Person person = new Person();
-//        List<Person> personList = new ArrayList<>();
-//
-//        fireStation.setAddress("address");
-//        fireStation.setStation("3");
-//        person.setFirstName("firstname");
-//        person.setLastName("lastname");
-//        person.setAddress("address");
-//        person.setCity("city");
-//        person.setZip("12345");
-//        person.setPhone("06123456789");
-//        person.setEmail("email@email.com");
-//        fireStationList.add(fireStation);
-//        personList.add(person);
-//
-//        PhoneAlertDTO phoneAlertList = new PhoneAlertDTO();
-//        List<String> phones = new ArrayList<>();
-//        phones.add("06123456789");
-//        phoneAlertList.setPhoneAlertList(phones);
-//
-//        when(fireStationDAO.getFirestationsByStationNumber("3")).thenReturn(fireStationList);
-//        when(personDAO.getPersonsListByAddress("address")).thenReturn(personList);
-//
-//        assertEquals(urlsDAO.getPhoneNumberListByFirestationNumber("3"), phoneAlertList);
-//        assertTrue(urlsDAO.getPhoneNumberListByFirestationNumber("3").getPhoneAlertList().toString().contains("06123456789"));
-//
-//    }
-//
-//
-//    @Test
-//    public void getChildListByAddressTest(){
-//
-//        urlsDAO = new UrlsDAO();
-//        FireStation fireStation = new FireStation();
-//        List<FireStation> fireStationList = new ArrayList<>();
-//        Person person = new Person();
-//        List<Person> personList = new ArrayList<>();
-//
-//
-//        fireStation.setAddress("address");
-//        fireStation.setStation("3");
-//        person.setFirstName("firstname");
-//        person.setLastName("lastname");
-//        person.setAddress("address");
-//        person.setCity("city");
-//        person.setZip("12345");
-//        person.setPhone("06123456789");
-//        person.setEmail("email@email.com");
-//        fireStationList.add(fireStation);
-//        personList.add(person);
-//
-//        List<String> medications = List.of("doliprane:1000mg");
-//        List<String> allergies = List.of("lactose");
-//        MedicalRecord medicalRecord = new MedicalRecord("firstname", "lastname", "01/01/2010", medications, allergies);
-//        List<MedicalRecord> medicalRecordList = new ArrayList<MedicalRecord>();
-//        medicalRecordList.add(medicalRecord);
-//        ChildAlertDTO childAlertDTO = new ChildAlertDTO(medicalRecord.getFirstName(),medicalRecord.getLastName(),medicalRecord.getAge(),personList);
-//        when(personDAO.getPersonsListByAddress("address")).thenReturn(personList);
-//        when(medicalRecordDAO.getByFirstName("firstname")).thenReturn(medicalRecord);
-//
-//        List<ChildAlertDTO> childList = new ArrayList<>();
-//        childList.add(childAlertDTO);
-//
-//        assertTrue(urlsDAO.getChildListByAddress("address").contains(childAlertDTO));
-//        assertTrue(childAlertDTO.getFirstName().contains("firstname"));
-//        assertEquals(12, medicalRecord.getAge());
-//
-//        }
+
+    @Test
+    public void getPersonsListByStationNumberTest() throws Exception {
+        urlsDAO = new UrlsDAO();
+        FireStation fireStation = new FireStation();
+        List<FireStation> fireStationList = new ArrayList<>();
+        Person person = new Person();
+        List<Person> personList = new ArrayList<>();
+        fireStationDAO = new FireStationDAO();
+        personDAO = new PersonDAO();
+
+        fireStation.setAddress("address");
+        fireStation.setStation("3");
+        person.setFirstName("firstname");
+        person.setLastName("lastname");
+        person.setAddress("address");
+        person.setCity("city");
+        person.setZip("12345");
+        person.setPhone("06123456789");
+        person.setEmail("email@email.com");
+        fireStationList.add(fireStation);
+        personList.add(person);
+
+        when(fireStationDAO.getFirestationsByStationNumber(anyString())).thenReturn(fireStationList);
+        when(personDAO.getPersonsListByAddress(anyString())).thenReturn(personList);
+
+        assertNotNull(urlsDAO.getPhoneNumberListByFirestationNumber("3"));
+    }
+
+    @Test
+    public void getPhoneNumberListByFirestationNumberTest() {
+        urlsDAO = new UrlsDAO();
+        fireStationDAO = new FireStationDAO();
+        personDAO = new PersonDAO();
+        FireStation fireStation = new FireStation();
+        List<FireStation> fireStationList = new ArrayList<>();
+        Person person = new Person();
+        List<Person> personList = new ArrayList<>();
+
+        fireStation.setAddress("address");
+        fireStation.setStation("3");
+        person.setFirstName("firstname");
+        person.setLastName("lastname");
+        person.setAddress("address");
+        person.setCity("city");
+        person.setZip("12345");
+        person.setPhone("06123456789");
+        person.setEmail("email@email.com");
+        fireStationList.add(fireStation);
+        personList.add(person);
+
+        PhoneAlertDTO phoneAlertList = new PhoneAlertDTO();
+        List<String> phones = new ArrayList<>();
+        phones.add("06123456789");
+        phoneAlertList.setPhoneAlertList(phones);
+
+        when(fireStationDAO.getFirestationsByStationNumber("3")).thenReturn(fireStationList);
+        when(personDAO.getPersonsListByAddress("address")).thenReturn(personList);
+
+        assertEquals(urlsDAO.getPhoneNumberListByFirestationNumber("3"), phoneAlertList);
+        assertTrue(urlsDAO.getPhoneNumberListByFirestationNumber("3").getPhoneAlertList().toString().contains("06123456789"));
+
+    }
+
+
+    @Test
+    public void getChildListByAddressTest(){
+
+        urlsDAO = new UrlsDAO();
+        FireStation fireStation = new FireStation();
+        List<FireStation> fireStationList = new ArrayList<>();
+        Person person = new Person();
+        List<Person> personList = new ArrayList<>();
+
+
+        fireStation.setAddress("address");
+        fireStation.setStation("3");
+        person.setFirstName("firstname");
+        person.setLastName("lastname");
+        person.setAddress("address");
+        person.setCity("city");
+        person.setZip("12345");
+        person.setPhone("06123456789");
+        person.setEmail("email@email.com");
+        fireStationList.add(fireStation);
+        personList.add(person);
+
+        List<String> medications = List.of("doliprane:1000mg");
+        List<String> allergies = List.of("lactose");
+        MedicalRecord medicalRecord = new MedicalRecord("firstname", "lastname", "01/01/2010", medications, allergies);
+        List<MedicalRecord> medicalRecordList = new ArrayList<MedicalRecord>();
+        medicalRecordList.add(medicalRecord);
+        ChildAlertDTO childAlertDTO = new ChildAlertDTO(medicalRecord.getFirstName(),medicalRecord.getLastName(),medicalRecord.getAge(),personList);
+        when(personDAO.getPersonsListByAddress("address")).thenReturn(personList);
+        when(medicalRecordDAO.getByFirstName("firstname")).thenReturn(medicalRecord);
+
+        List<ChildAlertDTO> childList = new ArrayList<>();
+        childList.add(childAlertDTO);
+
+        assertTrue(urlsDAO.getChildListByAddress("address").contains(childAlertDTO));
+        assertTrue(childAlertDTO.getFirstName().contains("firstname"));
+        assertEquals(12, medicalRecord.getAge());
+
+        }
 
     }
 

@@ -4,6 +4,8 @@ import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.model.MedicalRecord;
 import com.safetynetalerts.webapp.repository.MedicalRecordsRepository;
+import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,26 +20,25 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
 
 
 
 @ExtendWith(MockitoExtension.class)
 public class MedicalRecordDAOTest {
 
-    @InjectMocks
     private MedicalRecordDAO medicalRecordDAO;
-
-    @Mock
-    private Data data;
 
     @Test
     public void findAllMedicalRecordsTest(){
         medicalRecordDAO = new MedicalRecordDAO();
-        MedicalRecord medicalRecord = new MedicalRecord();
-        Data.getMedicalRecords().add(medicalRecord);
+        List<String> medications1 = List.of("doli:1000mg");
+        List<String> allergies1 = List.of("lacto");
+        MedicalRecord medicalRecord1 = new MedicalRecord("FirstnameE", "LastnameG", "01/01/2010", medications1, allergies1);
+        Data.getMedicalRecords().add(medicalRecord1);
 
-        assertTrue(medicalRecordDAO.findAll().contains(medicalRecord));
+        assertTrue(medicalRecordDAO.findAll().contains(medicalRecord1));
     }
 
     @Test
@@ -91,64 +92,39 @@ public class MedicalRecordDAOTest {
 
     }
 
-//  @Test
-//    public void updateMedicalRecordDAOTest() {
-//
-//        //GIVEN
-//        medicalRecordDAO = new MedicalRecordDAO();
-//        List<String> medications = List.of("doliprane:1000mg");
-//        List<String> allergies = List.of("lactose");
-//        MedicalRecord medicalRecord = new MedicalRecord("Firstname", "Lastname", "01/01/2000", medications, allergies);
-//
-//        List<String> medications2 = List.of("dafalgan");
-//        List<String> allergies2 = List.of("foin");
-//
-//        Data.getMedicalRecords().add(medicalRecord);
-//
-//        //THEN
-//        assertTrue(medicalRecordDAO.updateMedicalRecord("Firstname", "Lastname","10/10/1990", medications2, allergies2));
-//    }
+    @Test
+    public void updateMedicalRecordDAOTest() {
 
-//    @Test
-//    public void updateMedicalRecordDAOTest() {
-//        medicalRecordDAO = new MedicalRecordDAO();
-//        List<String> medications = List.of("doliprane:1000mg");
-//        List<String> allergies = List.of("lactose");
-//        MedicalRecord medicalRecord = new MedicalRecord("Firstname", "Lastname", "01/01/2000", medications, allergies);
-//        Data.getMedicalRecords().add(medicalRecord);
-//
-//
-//
-//        MedicalRecord currentMedical = new MedicalRecord();
-//            List<String> medications2 = List.of("dafalgan");
-//            List<String> allergies2 = List.of("foin");;
-//            currentMedical.setMedications(medications2);
-//            currentMedical.setAllergies(allergies2);
-//
-//            assertTrue(medicalRecordDAO.updateMedicalRecord("Firstname", "Lastname", "01/10/1990", medications2, allergies2));
-//
-//    }
-//
-//    @Test
-//    public void getByFirstNameTest(){
-//        medicalRecordDAO = new MedicalRecordDAO();
-//        List<String> medications = List.of("doliprane:1000mg");
-//        List<String> allergies = List.of("lactose");
-//        MedicalRecord medicalRecord = new MedicalRecord("Firstname", "Lastname", "01/01/2000", medications, allergies);
-//        Data.getMedicalRecords().add(medicalRecord);
-//
-//        assertSame(medicalRecordDAO.getByFirstName("Firstname"), medicalRecord);
-//    }
-//
-////
-////    public MedicalRecord getByFirstName(String firstName) {
-////
-////        for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
-////            if (medicalRecord.getFirstName().equals(firstName)) {
-////                return medicalRecord;
-////            }
-////        }
-////        return null;
-////    }
+        medicalRecordDAO = new MedicalRecordDAO();
+        List<String> medications = List.of("doliprane:1000mg");
+        List<String> allergies = List.of("lactose");
+        MedicalRecord medicalRecord = new MedicalRecord("Firstname", "Lastname", "01/01/2000", medications, allergies);
+        Data.getMedicalRecords().add(medicalRecord);
+
+        MedicalRecord currentMedical = new MedicalRecord();
+        List<String> medications2 = List.of("dafalgan:500mg");
+        List<String> allergies2 = List.of("foin");;
+        currentMedical.setMedications(medications2);
+        currentMedical.setAllergies(allergies2);
+        currentMedical.setFirstName("Firstname");
+        currentMedical.setLastName("Lastname");
+        currentMedical.setBirthdate("01/01/2000");
+        Data.getMedicalRecords().add(currentMedical);
+
+        assertTrue(medicalRecordDAO.updateMedicalRecord("Firstname", "Lastname", "01/10/1990", medications2, allergies2));
+
+    }
+
+    @Test
+    public void getByFirstNameTest(){
+        medicalRecordDAO = new MedicalRecordDAO();
+        List<String> medications = List.of("doliprane:1000mg");
+        List<String> allergies = List.of("lactose");
+        MedicalRecord medicalRecord = new MedicalRecord("Vincent", "Vio", "01/01/2000", medications, allergies);
+        Data.getMedicalRecords().add(medicalRecord);
+
+        assertNotNull(medicalRecordDAO.getByFirstName("Vincent"));
+    }
+
     }
 

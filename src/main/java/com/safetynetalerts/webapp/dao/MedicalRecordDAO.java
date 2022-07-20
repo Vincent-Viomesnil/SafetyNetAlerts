@@ -3,10 +3,11 @@ package com.safetynetalerts.webapp.dao;
 import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.MedicalRecord;
 import com.safetynetalerts.webapp.repository.MedicalRecordsRepository;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
-
+@Slf4j
 public class MedicalRecordDAO implements MedicalRecordsRepository {
 
 
@@ -43,6 +44,7 @@ public class MedicalRecordDAO implements MedicalRecordsRepository {
     @Override
     public MedicalRecord getByFirstName(String firstName) {
         for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
+            log.info("medicalrecord: " + medicalRecord);
             if (medicalRecord.getFirstName().equals(firstName)) {
                 return medicalRecord;
             }
