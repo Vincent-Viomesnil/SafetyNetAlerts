@@ -22,7 +22,6 @@ public class MedicalRecord {
     private Integer age;
 
 
-
     public MedicalRecord() {
     }
 
@@ -76,17 +75,15 @@ public class MedicalRecord {
     }
 
 
-    public Integer getAge(){
+    public int getAge(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         age = Period.between(LocalDate.parse(this.birthdate, formatter), LocalDate.now()).getYears();
         return age;
     }
 
-
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
-
 
     @Override
     public String toString() {

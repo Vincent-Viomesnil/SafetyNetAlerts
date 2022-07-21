@@ -18,6 +18,8 @@ public interface UrlsRepository {
 
     List<HomeByStationNumberDTO> getHomeByStationNumber(String station);
 
+    List<PersonInfoDTO> getPersonInfoList(String firstName, String lastName);
+
     EmailAlertDTO getCommunityEmailList(String city);
 }
 

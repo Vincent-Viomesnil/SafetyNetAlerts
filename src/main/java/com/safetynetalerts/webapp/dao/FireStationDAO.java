@@ -3,10 +3,12 @@ package com.safetynetalerts.webapp.dao;
 import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.repository.FireStationsRepository;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class FireStationDAO implements FireStationsRepository {
 
 
@@ -17,7 +19,6 @@ public class FireStationDAO implements FireStationsRepository {
 
     @Override
     public boolean saveFireStation(FireStation fireStation) {
-
         return Data.getFireStations().add(fireStation);
     }
 
@@ -31,6 +32,7 @@ public class FireStationDAO implements FireStationsRepository {
     @Override
     public boolean updateFireStation(String address, String station) {
         for (FireStation currentFireStation : Data.getFireStations()) {
+            log.info("firestion:" + currentFireStation);
             if (currentFireStation.getAddress().equals(address)) {
                 currentFireStation.setStation(station);
                 return true;
@@ -39,12 +41,12 @@ public class FireStationDAO implements FireStationsRepository {
         return false;
     }
 
-
-    public List<FireStation> getFirestationsByStationNumber(String stationNumber){
+    @Override
+    public List<FireStation> getFirestationsByStationNumber(String stationNumber) {
         List<FireStation> fireStationList = new ArrayList<>();
 
         for (FireStation fireStation : Data.getFireStations()) {
-
+        log.info("firestion:" + fireStation);
             if (fireStation.getStation().equals(stationNumber)) {
                 fireStationList.add(fireStation);
             }
@@ -53,7 +55,8 @@ public class FireStationDAO implements FireStationsRepository {
         return fireStationList;
     }
 
-    public List<FireStation> getFirestationsByAddress(String address){
+    @Override
+    public List<FireStation> getFirestationsByAddress(String address) {
         List<FireStation> fireStationList = new ArrayList<>();
 
         for (FireStation fireStation : Data.getFireStations()) {
@@ -65,14 +68,15 @@ public class FireStationDAO implements FireStationsRepository {
 
         return fireStationList;
     }
-    public String getAFirestationByAddress(String address){
+
+    @Override
+    public String getAFirestationByAddress(String address) {
         for (FireStation fireStation : Data.getFireStations()) {
+            log.info("firestion:" + fireStation);
             if (fireStation.getAddress().equals(address)) {
-               return fireStation.getStation();
+                return fireStation.getStation();
             }
         }
-
         return null;
     }
-
-    }
+}

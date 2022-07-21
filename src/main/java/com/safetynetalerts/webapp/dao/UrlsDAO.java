@@ -4,10 +4,12 @@ import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.dto.*;
 import com.safetynetalerts.webapp.model.*;
 import com.safetynetalerts.webapp.repository.UrlsRepository;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class UrlsDAO implements UrlsRepository {
 
 
@@ -77,12 +79,10 @@ public class UrlsDAO implements UrlsRepository {
             }
         }
         return childList;
-
     }
 
     public PhoneAlertDTO getPhoneNumberListByFirestationNumber(String station) {
         List<FireStation> firestations = new ArrayList<FireStation>();
-        PersonsListByStationNumberDTO personList = new PersonsListByStationNumberDTO();
         PhoneAlertDTO phoneAlertList = new PhoneAlertDTO();
         FireStationDAO fireStationDAO = new FireStationDAO();
 
@@ -127,7 +127,7 @@ public class UrlsDAO implements UrlsRepository {
         return fireAddressList;
     }
 
-
+    @Override
     public List<HomeByStationNumberDTO> getHomeByStationNumber(String station) {
         List<HomeByStationNumberDTO> homeByStationNumberList = new ArrayList<>();
         List<Person> personList = new ArrayList<>();
@@ -152,6 +152,7 @@ public class UrlsDAO implements UrlsRepository {
         return homeByStationNumberList;
     }
 
+    @Override
     public List<PersonInfoDTO> getPersonInfoList(String firstName, String lastName) {
         List<PersonInfoDTO> personInfoList = new ArrayList<>();
         List<Person> personList = new ArrayList<>();
@@ -167,10 +168,12 @@ public class UrlsDAO implements UrlsRepository {
         return personInfoList;
     }
 
+    @Override
     public EmailAlertDTO getCommunityEmailList(String city) {
         EmailAlertDTO emailAlertList = new EmailAlertDTO();
 
         for (Person person : Data.getPersons()) {
+            log.info("person:" + person);
             if (person.getCity().equals(city)) {
                 emailAlertList.getEmailAlertList().add(person.getEmail());
             }

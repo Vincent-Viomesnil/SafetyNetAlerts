@@ -17,85 +17,76 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
 @ExtendWith(MockitoExtension.class)
-@AutoConfigureMockMvc
 public class MedicalRecordServiceTest {
 
 
-    @MockBean
     private MedicalRecordDAO medicalRecordDAO;
 
     @InjectMocks
     private MedicalRecordService medicalRecordService;
 
-    private static MedicalRecord medicalRecord;
+    private MedicalRecord medicalRecord;
 
     @Test
     public void getMedicalRecordsTest() {
 
         //GIVEN
-
+        medicalRecordDAO = new MedicalRecordDAO();
         List<String> medications = List.of("doliprane:1000mg");
         List<String> allergies = List.of("lactose");
         medicalRecord = new MedicalRecord("Firstname", "Lastname", "01/01/2000", medications, allergies);
 
-        when(medicalRecordDAO.findAll()).thenReturn(Data.getMedicalRecords());
+        medicalRecordDAO.findAll();
 
         assertThat(medicalRecordService.getMedicalRecords()).isNotNull();
-
     }
 
     @Test
     public void addMedicalRecordTest() {
-
+        medicalRecordDAO = new MedicalRecordDAO();
         List<String> medications = List.of("doliprane:1000mg");
         List<String> allergies = List.of("lactose");
         medicalRecord = new MedicalRecord("Firstname", "Lastname", "01/01/2000", medications, allergies);
 
-        medicalRecordService.addMedicalRecord(medicalRecord);
+        Data.getMedicalRecords().add(medicalRecord);
 
-        when(medicalRecordDAO.saveMedicalRecord(any(MedicalRecord.class))).thenReturn(true);
-
-        assertThat(medicalRecordService.addMedicalRecord(medicalRecord)).isTrue();
+        assertTrue(medicalRecordService.addMedicalRecord(medicalRecord));
         assertThat(medicalRecord.getBirthdate()).isEqualTo("01/01/2000");
     }
 
 
     @Test
     public void updateMedicalRecordTest() {
-
+        medicalRecordDAO = new MedicalRecordDAO();
         List<String> medications = List.of("doliprane:1000mg");
         List<String> allergies = List.of("lactose");
         medicalRecord = new MedicalRecord("Firstname", "Lastname", "01/01/2000", medications, allergies);
 
-        medicalRecordService.addMedicalRecord(medicalRecord);
+        Data.getMedicalRecords().add(medicalRecord);
         List<String> medications2 = List.of("dafalgan");
         List<String> allergies2 = List.of("foin");
 
-        when(medicalRecordDAO.updateMedicalRecord("Firstname", "Lastname", "01/01/2000", medications2, allergies2)).thenReturn(true);
-
-        assertThat(medicalRecordService.updateMedicalRecord("Firstname", "Lastname", "01/01/2000", medications2, allergies2)).isTrue();
+        assertTrue(medicalRecordService.updateMedicalRecord("Firstname", "Lastname", "01/01/2000", medications2, allergies2));
 
     }
 
     @Test
     public void deleteFireStationTest() {
-
+        medicalRecordDAO = new MedicalRecordDAO();
         List<String> medications = List.of("doliprane:1000mg");
         List<String> allergies = List.of("lactose");
         medicalRecord = new MedicalRecord("Firstname", "Lastname", "01/01/2000", medications, allergies);
 
-        medicalRecordService.addMedicalRecord(medicalRecord);
+        Data.getMedicalRecords().add(medicalRecord);
 
-        when(medicalRecordDAO.deleteMedicalRecord("Firstname", "Lastname")).thenReturn(true);
+        medicalRecordDAO.deleteMedicalRecord("Firstname","Lastname");
 
-        assertThat(medicalRecordService.deleteMedicalRecord("Firstname", "Lastname")).isTrue();
         assertThat(medicalRecordService.getMedicalRecords()).doesNotHaveToString("01/01/2000");
-
     }
 }
 

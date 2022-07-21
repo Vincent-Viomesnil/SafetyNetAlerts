@@ -10,18 +10,18 @@ import java.util.List;
 @Service
 public class UrlsService {
 
-    static UrlsDAO urlsDAO = new UrlsDAO();
+    UrlsDAO urlsDAO = new UrlsDAO();
 
 
     public PersonsListByStationNumberDTO getPersonsListsFromStationNumber(String station) {
         return urlsDAO.getPersonsListsFromStationNumber(station);
     }
 
-    public static PhoneAlertDTO getPhoneNumberListByFirestationNumber(String station) {
+    public PhoneAlertDTO getPhoneNumberListByFirestationNumber(String station) {
         return urlsDAO.getPhoneNumberListByFirestationNumber(station);
     }
 
-    public List<ChildAlertDTO> getChildListByAddress(@PathVariable String address) {
+    public List<ChildAlertDTO> getChildListByAddress(String address) {
         return urlsDAO.getChildListByAddress(address);
     }
 

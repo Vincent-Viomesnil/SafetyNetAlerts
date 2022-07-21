@@ -1,15 +1,13 @@
 package com.safetynetalerts.webapp.dao;
 
 import com.safetynetalerts.webapp.data.Data;
-import com.safetynetalerts.webapp.model.FireStation;
 import com.safetynetalerts.webapp.model.MedicalRecord;
 import com.safetynetalerts.webapp.repository.MedicalRecordsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
 import java.util.List;
 
-
+@Slf4j
 public class MedicalRecordDAO implements MedicalRecordsRepository {
 
 
@@ -32,6 +30,7 @@ public class MedicalRecordDAO implements MedicalRecordsRepository {
     @Override
     public boolean updateMedicalRecord(String firstName, String lastName, String birthdate, List<String> medications, List<String> allergies) {
         for (MedicalRecord currentMedicalRecord : Data.getMedicalRecords()) {
+            log.info("medicalrecord:" + currentMedicalRecord);
             if (currentMedicalRecord.getFirstName().equals(firstName) && currentMedicalRecord.getLastName().equals(lastName)) {
                 currentMedicalRecord.setBirthdate(birthdate);
                 currentMedicalRecord.setMedications(medications);
@@ -42,20 +41,11 @@ public class MedicalRecordDAO implements MedicalRecordsRepository {
         return false;
     }
 
-    public List<MedicalRecord> getAgeByPerson(String firstName, String Lastname) {
-        List<MedicalRecord> medicalRecordList = new ArrayList<>();
-        for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
-            if (medicalRecord.getFirstName().equals(firstName) && medicalRecord.getLastName().equals(Lastname)) {
-                medicalRecord.getAge();
-                medicalRecordList.add(medicalRecord);
-            }
-        } return medicalRecordList;
-    }
 
-
+    @Override
     public MedicalRecord getByFirstName(String firstName) {
-
         for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
+            log.info("medicalrecord: " + medicalRecord);
             if (medicalRecord.getFirstName().equals(firstName)) {
                 return medicalRecord;
             }

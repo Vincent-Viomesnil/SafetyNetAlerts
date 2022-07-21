@@ -2,46 +2,38 @@ package com.safetynetalerts.webapp.service;
 
 
 import com.safetynetalerts.webapp.dao.FireStationDAO;
-import com.safetynetalerts.webapp.dao.PersonDAO;
 import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.FireStation;
-import com.safetynetalerts.webapp.model.Person;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@SpringBootTest
 @ExtendWith(MockitoExtension.class)
-@AutoConfigureMockMvc
 public class FireStationServiceTest {
 
 
-    @MockBean
     private FireStationDAO fireStationDAO;
 
     @InjectMocks
     private FireStationService fireStationService;
 
-    private static FireStation fireStation;
+    private FireStation fireStation;
 
     @Test
     public void getFireStationsTest() {
 
         //GIVEN
+        fireStationDAO = new FireStationDAO();
         fireStation = new FireStation();
 
         fireStation.setAddress("1 Avenue de Paris");
         fireStation.setStation("111");
 
-        when(fireStationDAO.findAll()).thenReturn(Data.getFireStations());
+        fireStationDAO.findAll();
 
         assertThat(fireStationService.getFireStations()).isNotNull();
 
@@ -49,14 +41,14 @@ public class FireStationServiceTest {
 
     @Test
     public void addPersonTest() {
-
+        fireStationDAO = new FireStationDAO();
         fireStation = new FireStation();
         fireStation.setAddress("1 Avenue de Paris");
         fireStation.setStation("111");
 
         fireStationService.addFireStation(fireStation);
 
-        when(fireStationDAO.saveFireStation(any(FireStation.class))).thenReturn(true);
+        Data.getFireStations().add(fireStation);
 
         assertThat(fireStationService.addFireStation(fireStation)).isTrue();
         assertThat(fireStation.getAddress()).isEqualTo("1 Avenue de Paris");
@@ -65,35 +57,29 @@ public class FireStationServiceTest {
 
     @Test
     public void updateFireStationTest() {
-
+        fireStationDAO = new FireStationDAO();
         fireStation = new FireStation();
         fireStation.setAddress("1 Avenue de Paris");
         fireStation.setStation("111");
 
-        fireStationService.addFireStation(fireStation);
+        Data.getFireStations().add(fireStation);
 
-        when(fireStationDAO.updateFireStation("2bis rue ocr", "15")).thenReturn(true);
-
-        assertThat(fireStationService.updateFireStation("2bis rue ocr", "15")).isTrue();
+        assertTrue(fireStationService.updateFireStation("1 Avenue de Paris", "15"));
 
     }
 
     @Test
     public void deleteFireStationTest() {
-
+        fireStationDAO = new FireStationDAO();
         fireStation = new FireStation();
         fireStation.setAddress("1 Avenue de Paris");
         fireStation.setStation("111");
 
-        fireStationService.addFireStation(fireStation);
+        Data.getFireStations().add(fireStation);
 
-        when(fireStationDAO.deleteFireStation("1 Avenue de Paris")).thenReturn(true);
-
-        assertThat(fireStationService.deleteFireStation("1 Avenue de Paris")).isTrue();
+        fireStationDAO.deleteFireStation("1 Avenue de Paris");
 
         assertThat(fireStationService.getFireStations()).doesNotHaveToString("1 Avenue de Paris");
-
-
     }
 }
 

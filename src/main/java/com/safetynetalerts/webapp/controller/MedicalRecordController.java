@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
-@RestController
 @Slf4j
+@RestController
 public class MedicalRecordController {
+
     @Autowired
     private MedicalRecordService medicalRecordService;
 
