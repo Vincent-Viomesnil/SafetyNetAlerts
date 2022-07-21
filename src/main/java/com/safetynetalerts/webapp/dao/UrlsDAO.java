@@ -173,6 +173,7 @@ public class UrlsDAO implements UrlsRepository {
         EmailAlertDTO emailAlertList = new EmailAlertDTO();
 
         for (Person person : Data.getPersons()) {
+            log.info("person:" + person);
             if (person.getCity().equals(city)) {
                 emailAlertList.getEmailAlertList().add(person.getEmail());
             }

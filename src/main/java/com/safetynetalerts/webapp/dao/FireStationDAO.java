@@ -32,6 +32,7 @@ public class FireStationDAO implements FireStationsRepository {
     @Override
     public boolean updateFireStation(String address, String station) {
         for (FireStation currentFireStation : Data.getFireStations()) {
+            log.info("firestion:" + currentFireStation);
             if (currentFireStation.getAddress().equals(address)) {
                 currentFireStation.setStation(station);
                 return true;
@@ -71,6 +72,7 @@ public class FireStationDAO implements FireStationsRepository {
     @Override
     public String getAFirestationByAddress(String address) {
         for (FireStation fireStation : Data.getFireStations()) {
+            log.info("firestion:" + fireStation);
             if (fireStation.getAddress().equals(address)) {
                 return fireStation.getStation();
             }

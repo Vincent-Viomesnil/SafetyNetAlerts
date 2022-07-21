@@ -61,6 +61,7 @@ public class PersonDAO implements PersonsRepository {
     public List<Person> getPersonByFirstNameAndLastName(String firstName, String lastName) {
         List<Person> personList = new ArrayList<Person>();
         for (Person person : Data.getPersons()) {
+            log.info("person:"  + person);
             if (person.getFirstName().equals(firstName) && (person.getLastName().equals(lastName))) {
                 personList.add(person);
             }

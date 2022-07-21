@@ -30,6 +30,7 @@ public class MedicalRecordDAO implements MedicalRecordsRepository {
     @Override
     public boolean updateMedicalRecord(String firstName, String lastName, String birthdate, List<String> medications, List<String> allergies) {
         for (MedicalRecord currentMedicalRecord : Data.getMedicalRecords()) {
+            log.info("medicalrecord:" + currentMedicalRecord);
             if (currentMedicalRecord.getFirstName().equals(firstName) && currentMedicalRecord.getLastName().equals(lastName)) {
                 currentMedicalRecord.setBirthdate(birthdate);
                 currentMedicalRecord.setMedications(medications);
