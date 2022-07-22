@@ -14,8 +14,6 @@ public class Data {
     private static List<Person> persons = new ArrayList<Person>();
     private static List<MedicalRecord> medicalrecords= new ArrayList<MedicalRecord>();
     private static List<FireStation> firestations= new ArrayList<FireStation>();
-    private static List<PersonByStationNumberDTO> personByStationNumberDTOS = new ArrayList<>();
-
 
 
     public static List<Person> getPersons() {
@@ -28,14 +26,6 @@ public class Data {
 
     public static List<MedicalRecord> getMedicalRecords() {
         return medicalrecords;
-    }
-
-    public static List<PersonByStationNumberDTO> getFireStationByStationNumbers() {
-        return personByStationNumberDTOS;
-    }
-
-    public static void setFireStationByStationNumbers(List<PersonByStationNumberDTO> personByStationNumberDTOS) {
-        Data.personByStationNumberDTOS = personByStationNumberDTOS;
     }
 
     public void setPersons(List<Person> persons) {

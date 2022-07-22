@@ -4,10 +4,12 @@ import com.safetynetalerts.webapp.data.Data;
 import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.repository.PersonsRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+//@Repository
 @Slf4j
 public class PersonDAO implements PersonsRepository {
 

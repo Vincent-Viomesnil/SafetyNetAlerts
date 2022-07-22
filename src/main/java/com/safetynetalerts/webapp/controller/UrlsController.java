@@ -65,7 +65,7 @@ public class UrlsController {
     }
 
     @GetMapping(value = "/flood/stations")
-    public List<HomeByStationNumberDTO> getHomeByStationNumber(@RequestParam(value = "station")String station){
+    public List<HomeByStationNumberDTO> getHomeByStationNumber(@RequestParam List<String> station){
         List<HomeByStationNumberDTO> homeByStationNumberDTOList = urlsService.getHomeByStationNumber(station);
         if (homeByStationNumberDTOList.isEmpty()){
             log.error("Find homes by firestation number request FAILED, station number doesn't exist");

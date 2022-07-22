@@ -3,7 +3,6 @@ package com.safetynetalerts.webapp.service;
 import com.safetynetalerts.webapp.dao.UrlsDAO;
 import com.safetynetalerts.webapp.dto.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class UrlsService {
         return urlsDAO.getPersonsListByAddress(address);
     }
 
-    public List<HomeByStationNumberDTO> getHomeByStationNumber(String station) {
+    public List<HomeByStationNumberDTO> getHomeByStationNumber(List<String> station) {
         return urlsDAO.getHomeByStationNumber(station);
     }
 

@@ -20,6 +20,8 @@ public interface FireStationsRepository {
 
     List<FireStation> getFirestationsByStationNumber(String stationNumber);
 
+    List<FireStation> getFirestationsByStationNumber(List<String> stationNumber);
+
     List<FireStation> getFirestationsByAddress(String address);
 
     String getAFirestationByAddress(String address);

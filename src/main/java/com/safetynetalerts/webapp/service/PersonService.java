@@ -3,6 +3,7 @@ package com.safetynetalerts.webapp.service;
 import com.safetynetalerts.webapp.dao.PersonDAO;
 import com.safetynetalerts.webapp.model.Person;
 import com.safetynetalerts.webapp.repository.PersonsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +12,9 @@ import java.util.List;
 @Service
 public class PersonService {
 
-
-        PersonDAO personDAO = new PersonDAO();
+//@Autowired
+//PersonDAO personDAO;
+    PersonDAO personDAO = new PersonDAO();
 
         public List<Person> getPersons() {
             return personDAO.findAll();

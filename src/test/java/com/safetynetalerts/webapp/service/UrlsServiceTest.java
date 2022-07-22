@@ -148,10 +148,16 @@ public class UrlsServiceTest {
         FireStation fireStation = new FireStation();
         fireStation.setStation("2");
         fireStation.setAddress("address");
+        FireStation fireStation2 = new FireStation();
+        fireStation2.setStation("3");
+        fireStation2.setAddress("address");
+        List<String> firestationsStationNumber = new ArrayList<>();
+        firestationsStationNumber.add(fireStation.getStation());
+        firestationsStationNumber.add(fireStation2.getStation());
 
-        urlsDAO.getHomeByStationNumber("2");
+        urlsDAO.getHomeByStationNumber(firestationsStationNumber);
 
-        assertThat(urlsService.getHomeByStationNumber("2")).isNotNull();
+        assertThat(urlsService.getHomeByStationNumber(firestationsStationNumber)).isNotNull();
     }
 
 

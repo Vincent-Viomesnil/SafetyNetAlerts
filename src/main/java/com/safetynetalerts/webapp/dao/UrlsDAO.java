@@ -19,7 +19,7 @@ public class UrlsDAO implements UrlsRepository {
         PersonsListByStationNumberDTO personList = new PersonsListByStationNumberDTO();
         FireStationDAO fireStationDAO = new FireStationDAO();
 
-        firestations = fireStationDAO.getFirestationsByStationNumber(station);
+        firestations = fireStationDAO.getFirestationsByStationNumber(List.of(station));
         //méthode qui retourne l'ensemble des firestation avec comme paramètre le numéro de station
 
         for (FireStation firestation : firestations) {
@@ -47,8 +47,6 @@ public class UrlsDAO implements UrlsRepository {
                 }
             }
         }
-
-
         return personList;
 
     }
@@ -56,12 +54,12 @@ public class UrlsDAO implements UrlsRepository {
     @Override
     public List<ChildAlertDTO> getChildListByAddress(String address) {
 
-        List<Person> persons = new ArrayList<Person>();
+        List<Person> persons = new ArrayList<>();
         List<ChildAlertDTO> childList = new ArrayList<>();
         PersonDAO personDAO = new PersonDAO();
 
         persons = personDAO.getPersonsListByAddress(address);
-
+        //méthode qui retourne l'ensemble des personnes en fonction de l'address indiquée en paramètre
         for (Person person : persons) {
             for (MedicalRecord medicalRecord : Data.getMedicalRecords()) {
                 if (person.getFirstName().equals(medicalRecord.getFirstName())) {
@@ -86,7 +84,7 @@ public class UrlsDAO implements UrlsRepository {
         PhoneAlertDTO phoneAlertList = new PhoneAlertDTO();
         FireStationDAO fireStationDAO = new FireStationDAO();
 
-        firestations = fireStationDAO.getFirestationsByStationNumber(station);
+        firestations = fireStationDAO.getFirestationsByStationNumber(List.of(station));
         //méthode qui retourne l'ensemble des firestation avec comme paramètre le numéro de station
 
         for (FireStation firestation : firestations) {
@@ -128,7 +126,7 @@ public class UrlsDAO implements UrlsRepository {
     }
 
     @Override
-    public List<HomeByStationNumberDTO> getHomeByStationNumber(String station) {
+    public List<HomeByStationNumberDTO> getHomeByStationNumber(List<String> station) {
         List<HomeByStationNumberDTO> homeByStationNumberList = new ArrayList<>();
         List<Person> personList = new ArrayList<>();
         List<FireStation> firestations = new ArrayList<FireStation>();

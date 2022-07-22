@@ -16,7 +16,7 @@ public interface UrlsRepository {
 
     FireAddressListDTO getPersonsListByAddress(String address);
 
-    List<HomeByStationNumberDTO> getHomeByStationNumber(String station);
+    List<HomeByStationNumberDTO> getHomeByStationNumber(List<String> station);
 
     List<PersonInfoDTO> getPersonInfoList(String firstName, String lastName);
 

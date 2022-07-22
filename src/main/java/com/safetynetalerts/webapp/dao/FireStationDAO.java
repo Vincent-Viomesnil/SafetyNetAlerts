@@ -46,8 +46,22 @@ public class FireStationDAO implements FireStationsRepository {
         List<FireStation> fireStationList = new ArrayList<>();
 
         for (FireStation fireStation : Data.getFireStations()) {
-        log.info("firestion:" + fireStation);
+            log.info("firestion:" + fireStation);
             if (fireStation.getStation().equals(stationNumber)) {
+                fireStationList.add(fireStation);
+            }
+        }
+
+        return fireStationList;
+    }
+
+    @Override
+    public List<FireStation> getFirestationsByStationNumber(List<String> stationNumber) {
+        List<FireStation> fireStationList = new ArrayList<>();
+
+        for (FireStation fireStation : Data.getFireStations()) {
+        log.info("firestion:" + fireStation);
+            if (stationNumber.contains(fireStation.getStation())) {
                 fireStationList.add(fireStation);
             }
         }
